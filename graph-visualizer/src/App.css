@@ -3,6 +3,7 @@
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  font-family: 'Times New Roman', serif;
 }
 
 ul {
@@ -43,7 +44,7 @@ section.visual {
   width: 75vw;
   height: 85vh;
   margin-right: 1vw;
-  background: grey;
+  border: 1px solid grey;
   position: relative;
 }
 
@@ -73,4 +74,10 @@ section.interface div {
 
 section.interface div:first-child {
   margin-top: 5vh;
+}
+
+
+section.interface button {
+  height: 3vh;
+  width: 4vw;
 }

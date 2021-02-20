@@ -30,6 +30,17 @@ const originalElements = [
 const App: React.FunctionComponent = () => {
   const [elements, setElements] = useState(originalElements)
   const [generation, setGeneration] = useState(0)
+  const addNode = () => {
+    console.log()
+  }
+
+  const delNode = () => {
+    console.log()
+  }
+
+  const editNode = () => {
+    console.log()
+  }
 
   return (
     <div className="App">
@@ -52,14 +63,17 @@ const App: React.FunctionComponent = () => {
           </svg>
         </section>
         <section className="interface flex-column">
-          <div>
+          <div id="addNode">
             <h3>Add node</h3>
+            <button onClick={addNode}>Add</button>
           </div>
-          <div>
+          <div id="delNode">
             <h3>Delete node</h3>
+            <button onClick={delNode}>Delete</button>
           </div>
-          <div>
+          <div id="editNode">
             <h3>Edit node</h3>
+            <button onClick={editNode}>Edit</button>
           </div>
         </section>
       </div>
