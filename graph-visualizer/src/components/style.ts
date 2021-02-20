@@ -20,8 +20,8 @@ const edgeStyles = [
     selector: 'edge',
     style: {
       'curve-style': 'bezier',
-      'target-arrow-shape': 'triangle',
-      'target-arrow-color': COLORS.purp,
+      // 'target-arrow-shape': 'triangle',
+      // 'target-arrow-color': COLORS.purp,
       'line-color': COLORS.purp,
     },
   },
