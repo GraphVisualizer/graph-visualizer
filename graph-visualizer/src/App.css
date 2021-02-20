@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  list-style: none;
+  width: 80vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+  height: 10vh;
+  width: 100vw;
+  padding: 1.5rem 0 0.25rem 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav ul {
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-left: 2rem;
+}
+
+nav li:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+section.visual {
+  width: 75vw;
+  height: 85vh;
+  margin-right: 1vw;
+  background: grey;
+  position: relative;
+}
+
+section.visual svg {
+  width: 25px;
+  position: absolute;
+  bottom: 5px;
+  right: 7px;
+}
+
+section.visual svg:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+section.interface {
+  width: 20vw;
+  height: 85vh;
+  margin-right: 1vw;
+  background: grey;
+  padding-left: 2rem;
+}
+
+section.interface div {
+  height: 30vh;
+}
+
+section.interface div:first-child {
+  margin-top: 5vh;
 }
