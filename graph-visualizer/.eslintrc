@@ -11,7 +11,7 @@
   ],
   "plugins": ["simple-import-sort", "react-hooks", "prettier", "@typescript-eslint"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./graph-visualizer/tsconfig.json"
   },
   "settings": {
     "import/resolver": {
