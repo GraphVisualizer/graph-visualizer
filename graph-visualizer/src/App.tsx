@@ -1,12 +1,11 @@
-import './App.css'
-
 import React from 'react'
 
-import logo from './logo.svg'
+import GraphContainer from './containers/GraphContainer'
 
 const App: React.FunctionComponent = () => {
   return (
     <div className="App">
+      <GraphContainer />
       <nav className="flex-row">
         <h1>Graph Visualizer</h1>
         <ul className="flex-row">
