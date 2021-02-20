@@ -10,9 +10,6 @@
     "prettier/@typescript-eslint"
   ],
   "plugins": ["simple-import-sort", "react-hooks", "prettier", "@typescript-eslint"],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
   "settings": {
     "import/resolver": {
       "node": {
