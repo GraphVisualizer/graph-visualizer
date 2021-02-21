@@ -21,10 +21,6 @@ const App: React.FunctionComponent = () => {
     source: '',
   })
 
-  useEffect(() => {
-    console.log(elemActions)
-  }, [elemActions])
-
   const addNode = () => {
     setElemActions({
       ...elemActions,
