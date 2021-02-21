@@ -1,53 +1,75 @@
 import cytoscape from 'cytoscape'
 import cola from 'cytoscape-cola'
 import React, { useEffect, useRef } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
+import { ElemAction } from '../App'
 import style from './style'
 
 interface GraphProps {
-  newElement: cytoscape.ElementDefinition
-  delElement: string
-  setSelectedElem: React.Dispatch<React.SetStateAction<string>>
+  elemActions: ElemAction
+  setElemActions: React.Dispatch<React.SetStateAction<ElemAction>>
 }
 
-const App: React.FunctionComponent<GraphProps> = ({ newElement, delElement, setSelectedElem }: GraphProps) => {
+const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions }: GraphProps) => {
   const container = useRef<HTMLDivElement>(null)
   const graph = useRef<cytoscape.Core>()
   const layout = useRef<cytoscape.Layouts>()
 
   useEffect(() => {
-    if (graph.current) {
+    if (graph.current && (elemActions.add || elemActions.delete || elemActions.source)) {
       if (layout.current) {
         layout.current.stop()
       }
 
-      graph.current.add(newElement).on('tap', (evt) => {
-        graph.current?.$('.selected').removeClass('selected')
-        setSelectedElem(evt.target.id())
-        evt.target.addClass('selected')
-      })
+      const newActions = elemActions
+
+      if (elemActions.delete !== '') {
+        graph.current.$id(elemActions.delete).remove()
+        newActions.delete = ''
+      }
+
+      if (elemActions.add !== '') {
+        graph.current.add({ data: { id: elemActions.add } }).on('tap', (evt) => {
+          graph.current?.$('.selected').removeClass('selected')
+          evt.target.addClass('selected')
+
+          const source = graph.current?.$('.source')
+          if (!source?.empty()) {
+            if (layout.current) {
+              layout.current.stop()
+            }
+
+            graph.current?.add({
+              group: 'edges',
+              data: { id: `edge-${uuidv4()}`, source: source?.id(), target: evt.target.id() },
+            })
+            source?.removeClass('source')
+
+            layout.current = graph.current?.elements().makeLayout({
+              name: 'cola',
+            })
+            layout.current?.run()
+          }
+
+          setElemActions({ ...elemActions, selected: evt.target.id() })
+        })
+        newActions.add = ''
+      }
+
+      if (elemActions.source !== '') {
+        graph.current.$id(elemActions.source).addClass('source')
+        newActions.source = ''
+      }
+
+      setElemActions(newActions)
 
       layout.current = graph.current.elements().makeLayout({
         name: 'cola',
       })
       layout.current.run()
     }
-  }, [newElement])
-
-  useEffect(() => {
-    if (graph.current) {
-      if (layout.current) {
-        layout.current.stop()
-      }
-
-      graph.current.$id(delElement).remove()
-
-      layout.current = graph.current.elements().makeLayout({
-        name: 'cola',
-      })
-      layout.current.run()
-    }
-  }, [delElement])
+  }, [elemActions.delete, elemActions.add, elemActions.source])
 
   useEffect(() => {
     if (!container.current) {

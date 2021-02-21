@@ -21,6 +21,13 @@ const nodeStyles = [
       'background-color': COLORS.gren,
     },
   },
+  {
+    selector: '.source',
+    style: {
+      'border-width': '2px',
+      'border-style': 'dotted',
+    },
+  },
 ]
 const edgeStyles = [
   {
