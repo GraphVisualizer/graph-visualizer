@@ -32,7 +32,7 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
   }
 
   useEffect(() => {
-    if (graph.current && (elemActions.add || elemActions.delete || elemActions.source)) {
+    if (graph.current && (elemActions.add || elemActions.delete || elemActions.source || elemActions.destroy)) {
       if (layout.current) {
         layout.current.stop()
       }
@@ -77,14 +77,20 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
         newActions.source = ''
       }
 
-      setElemActions(newActions)
+      if (elemActions.destroy !== '') {
+        destroyGraph()
+        newActions.destroy = ''
+        // setElemActions(newActions)
+        // layout.current?.run()
+      }
 
+      setElemActions(newActions)
       layout.current = graph.current.elements().makeLayout({
         name: 'cola',
       })
       layout.current.run()
     }
-  }, [elemActions.delete, elemActions.add, elemActions.source])
+  }, [elemActions.delete, elemActions.add, elemActions.source, elemActions.destroy])
 
   useEffect(() => {
     if (graph.current) {

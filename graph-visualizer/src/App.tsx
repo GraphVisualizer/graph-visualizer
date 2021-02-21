@@ -10,6 +10,7 @@ export interface ElemAction {
   add: string
   delete: string
   source: string
+  destroy: string
 }
 
 export type AlgAction = 'kruskal' | 'prim' | 'djikstra' | ''
@@ -24,6 +25,7 @@ const App: React.FunctionComponent = () => {
     add: '',
     delete: '',
     source: '',
+    destroy: '',
   })
   const [algActions, setAlgActions] = useState<AlgAction>('')
 
@@ -55,6 +57,7 @@ const App: React.FunctionComponent = () => {
   }
 
   const clearGraph = () => {
+    if (!isGraphCleared) setElemActions({ ...elemActions, destroy: 'destroy' })
     setIsGraphCleared(!isGraphCleared)
   }
 
