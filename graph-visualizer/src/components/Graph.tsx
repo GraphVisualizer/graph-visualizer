@@ -107,11 +107,8 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
           .addClass('alg')
       }
 
-      if (algActions === 'prim') {
-        // graph.current
-        //   .elements()
-        //   .kruskal(() => 1)
-        //   .addClass('alg')
+      if (algActions === 'karger') {
+        graph.current.elements().hopcroftTarjanBiconnected().cut?.addClass('alg')
       }
 
       if (algActions === 'djikstra') {
