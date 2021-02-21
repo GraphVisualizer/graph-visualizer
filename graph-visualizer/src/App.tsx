@@ -13,7 +13,7 @@ export interface ElemAction {
   destroy: string
 }
 
-export type AlgAction = 'kruskal' | 'prim' | 'djikstra' | ''
+export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | ''
 
 const App: React.FunctionComponent = () => {
   const [isFullScreen, setFullScreen] = useState(false)
@@ -151,14 +151,11 @@ const App: React.FunctionComponent = () => {
           </div>
           <div className={isAlgTabHidden ? 'page hide' : 'page'} id="algorithms">
             <div>
-              <button onClick={() => setAlgActions('djikstra')}>
-                <h3>Djikstra&#39;s Algorithm - in progress</h3>
-              </button>
               <button onClick={() => setAlgActions('kruskal')}>
                 <h3>Minimum Spanning Tree</h3>
               </button>
-              <button onClick={() => setAlgActions('prim')}>
-                <h3>Prim&#39;s Algorithm - in progress</h3>
+              <button onClick={() => setAlgActions('karger')}>
+                <h3>Cut Vertices</h3>
               </button>
               <button onClick={() => setAlgActions('')}>
                 <h3>Clear</h3>
