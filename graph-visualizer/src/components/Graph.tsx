@@ -16,6 +16,20 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions 
   const graph = useRef<cytoscape.Core>()
   const layout = useRef<cytoscape.Layouts>()
 
+  const destroyGraph = () => {
+    if (graph.current) {
+      graph.current.destroy()
+
+      cytoscape.use(cola)
+      graph.current = cytoscape({
+        style,
+        maxZoom: 1,
+        wheelSensitivity: 0.2,
+        container: container.current,
+      })
+    }
+  }
+
   useEffect(() => {
     if (graph.current && (elemActions.add || elemActions.delete || elemActions.source)) {
       if (layout.current) {
