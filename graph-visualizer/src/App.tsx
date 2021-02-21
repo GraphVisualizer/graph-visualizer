@@ -16,6 +16,7 @@ const App: React.FunctionComponent = () => {
   const [isFullScreen, setFullScreen] = useState(false)
   const [isGenTabHidden, setHiddenGenTab] = useState(false)
   const [isAlgTabHidden, setHiddenAlgTab] = useState(true)
+  const [isGraphCleared, setIsGraphCleared] = useState(false)
   const [elemActions, setElemActions] = useState<ElemAction>({
     selected: '',
     add: '',
@@ -50,6 +51,10 @@ const App: React.FunctionComponent = () => {
     setHiddenAlgTab(!isAlgTabHidden)
   }
 
+  const clearGraph = () => {
+    setIsGraphCleared(!isGraphCleared)
+  }
+
   return (
     <div className="App">
       <nav className="flex-row">
@@ -79,6 +84,7 @@ const App: React.FunctionComponent = () => {
             <button onClick={toggleTabs}>Toggle</button>
           </div>
           <div className={isGenTabHidden ? 'page hide' : 'page'} id="general">
+            <button onClick={clearGraph}>Clear</button>
             <div id="addNode">
               <div className="flex-row head">
                 <h3>Add node</h3>
@@ -139,7 +145,15 @@ const App: React.FunctionComponent = () => {
           </div>
           <div className={isAlgTabHidden ? 'page hide' : 'page'} id="algorithms">
             <div>
-              <h3>Djikstras Algorithm</h3>
+              <button>
+                <h3>Djikstras Algorithm</h3>
+              </button>
+              <button>
+                <h3>Minimum Spanning Tree</h3>
+              </button>
+              <button>
+                <h3>Prim&#39;s Algorithm</h3>
+              </button>
             </div>
           </div>
         </section>

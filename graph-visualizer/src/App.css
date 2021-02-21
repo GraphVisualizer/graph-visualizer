@@ -84,14 +84,18 @@ section.interface {
   background: none;
   width: 18vw;
   padding-bottom: 2vh;
-  margin-top: -4vh;
-  margin-bottom: 8vh;
+  margin-top: -3vh;
+  margin-bottom: 4vh;
   border-bottom: 1px solid black;
 }
 
 section.interface div.head {
   height: 3vh;
   width: 10vw;
+}
+
+#general button:first-child {
+  margin-bottom: -1vh;
 }
 
 #addNode {
@@ -137,4 +141,13 @@ section.interface button:focus {
 .hide {
   visibility: hidden;
   max-height: 0;
+}
+
+#algorithms div {
+  height: 40vh;
+}
+
+#algorithms button {
+  width: 15vw;
+  height: 5vh;
 }
