@@ -109,11 +109,11 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
         graph.current.elements().hopcroftTarjanBiconnected().cut?.addClass('alg')
       }
 
-      if (algActions === 'bfs' && elemActions.source !== '') {
+      if (algActions === 'bfs' && elemActions.selected !== '') {
         graph.current.elements().bfs({
-          roots: elemActions.source,
+          roots: elemActions.selected,
           visit: (v, e, u, i, depth) => {
-            v.addClass('alg')
+            setTimeout(() => v.addClass('alg'), 10000 * depth)
           },
         })
       }
