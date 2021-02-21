@@ -5,10 +5,12 @@ import React, { useEffect, useRef } from 'react'
 import style from './style'
 
 interface GraphProps {
-  elements: cytoscape.ElementDefinition[]
+  newElement: cytoscape.ElementDefinition
+  delElement: string
+  setSelectedElem: React.Dispatch<React.SetStateAction<string>>
 }
 
-const App: React.FunctionComponent<GraphProps> = ({ elements }: GraphProps) => {
+const App: React.FunctionComponent<GraphProps> = ({ newElement, delElement, setSelectedElem }: GraphProps) => {
   const container = useRef<HTMLDivElement>(null)
   const graph = useRef<cytoscape.Core>()
   const layout = useRef<cytoscape.Layouts>()
@@ -18,13 +20,34 @@ const App: React.FunctionComponent<GraphProps> = ({ elements }: GraphProps) => {
       if (layout.current) {
         layout.current.stop()
       }
-      graph.current.add(elements)
+
+      graph.current.add(newElement).on('tap', (evt) => {
+        graph.current?.$('.selected').removeClass('selected')
+        setSelectedElem(evt.target.id())
+        evt.target.addClass('selected')
+      })
+
       layout.current = graph.current.elements().makeLayout({
         name: 'cola',
       })
       layout.current.run()
     }
-  }, [elements])
+  }, [newElement])
+
+  useEffect(() => {
+    if (graph.current) {
+      if (layout.current) {
+        layout.current.stop()
+      }
+
+      graph.current.$id(delElement).remove()
+
+      layout.current = graph.current.elements().makeLayout({
+        name: 'cola',
+      })
+      layout.current.run()
+    }
+  }, [delElement])
 
   useEffect(() => {
     if (!container.current) {
@@ -34,7 +57,6 @@ const App: React.FunctionComponent<GraphProps> = ({ elements }: GraphProps) => {
       if (!graph.current) {
         cytoscape.use(cola)
         graph.current = cytoscape({
-          elements,
           style,
           maxZoom: 1,
           wheelSensitivity: 0.2,
