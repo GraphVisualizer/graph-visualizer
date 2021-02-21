@@ -111,9 +111,9 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
 
       if (algActions === 'bfs' && elemActions.selected !== '') {
         graph.current.elements().bfs({
-          roots: elemActions.selected,
+          roots: `#${elemActions.selected}`,
           visit: (v, e, u, i, depth) => {
-            setTimeout(() => v.addClass('alg'), 10000 * depth)
+            setTimeout(() => v.addClass('alg'), 1000 * depth)
           },
         })
       }
