@@ -117,6 +117,14 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
           },
         })
       }
+      if (algActions === 'dfs' && elemActions.selected !== '') {
+        graph.current.elements().dfs({
+          roots: `#${elemActions.selected}`,
+          visit: (v, e, u, i, depth) => {
+            setTimeout(() => v.addClass('alg'), 1000 * depth)
+          },
+        })
+      }
 
       layout.current = graph.current.elements().makeLayout({
         name: 'cola',
