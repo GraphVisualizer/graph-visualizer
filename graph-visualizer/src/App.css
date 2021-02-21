@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  font-family: 'Times New Roman', serif;
+  font-family: 'Raleway', serif;
+  color: black;
+}
+
+body {
+  background: #F6FAFC;
 }
 
 ul {
@@ -24,20 +31,21 @@ ul {
 }
 
 nav {
-  height: 10vh;
+  height: 8vh;
   width: 100vw;
-  padding: 1.5rem 0 0.25rem 1rem;
+  padding: 1.75rem 0 0.25rem 1rem;
 }
 
 nav ul {
   justify-content: space-between;
-  padding-top: 1rem;
+  padding-top: 0.25rem;
   padding-left: 2rem;
 }
 
 nav li:hover {
   transform: scale(1.1);
   cursor: pointer;
+  font-size: 1.0rem;
 }
 
 section.visual {
@@ -64,20 +72,69 @@ section.interface {
   width: 20vw;
   height: 85vh;
   margin-right: 1vw;
-  background: grey;
+  background: #b9D7EA;
   padding-left: 2rem;
 }
 
-section.interface div {
-  height: 30vh;
+.page div {
+  height: 20vh;
 }
 
-section.interface div:first-child {
-  margin-top: 5vh;
+.tabs {
+  background: none;
+  width: 18vw;
+  padding-bottom: 2vh;
+  margin-top: -4vh;
+  margin-bottom: 8vh;
+  border-bottom: 1px solid black;
 }
 
+section.interface div.head {
+  height: 3vh;
+  width: 10vw;
+}
+
+#addNode {
+  margin-top: 3vh;
+}
+
+section.interface svg {
+  height: 2vh;
+  width: 2vw;
+}
 
 section.interface button {
-  height: 3vh;
-  width: 4vw;
+  height: 3.5vh;
+  width: 4.5vw;
+  padding: 0.15rem 0.25rem;
+  border-radius: 11px;
+  border: white;
+  margin-top: 3vh;
+  margin-left: 0.5vw;
+}
+
+section.interface button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+section.interface button:focus {
+  cursor: pointer;
+}
+
+.tooltip:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.hide {
+  visibility: hidden;
+  max-height: 0;
 }
