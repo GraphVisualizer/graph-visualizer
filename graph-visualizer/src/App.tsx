@@ -43,7 +43,7 @@ const App: React.FunctionComponent = () => {
     })
   }
 
-  const editNode = () => {
+  const addEdge = () => {
     setElemActions({ ...elemActions, source: elemActions.selected, selected: '' })
   }
 
@@ -129,7 +129,7 @@ const App: React.FunctionComponent = () => {
               </div>
               <button onClick={delNode}>Delete</button>
             </div>
-            <div id="editNode">
+            <div id="addEdge">
               <div className="flex-row head">
                 <h3>Add edge</h3>
                 <svg
@@ -146,13 +146,13 @@ const App: React.FunctionComponent = () => {
                   />
                 </svg>
               </div>
-              <button onClick={editNode}>Add</button>
+              <button onClick={addEdge}>Add</button>
             </div>
           </div>
           <div className={isAlgTabHidden ? 'page hide' : 'page'} id="algorithms">
             <div>
               <button onClick={() => setAlgActions('djikstra')}>
-                <h3>Djikstras Algorithm - in progress</h3>
+                <h3>Djikstra&#39;s Algorithm - in progress</h3>
               </button>
               <button onClick={() => setAlgActions('kruskal')}>
                 <h3>Minimum Spanning Tree</h3>

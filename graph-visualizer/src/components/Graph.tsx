@@ -80,8 +80,6 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
       if (elemActions.destroy !== '') {
         destroyGraph()
         newActions.destroy = ''
-        // setElemActions(newActions)
-        // layout.current?.run()
       }
 
       setElemActions(newActions)
