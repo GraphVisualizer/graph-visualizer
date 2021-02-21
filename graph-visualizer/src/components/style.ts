@@ -2,6 +2,7 @@ import { Stylesheet } from 'cytoscape'
 
 const COLORS = {
   purp: '#43447a',
+  gren: '#00FF00',
 }
 
 const nodeStyles = [
@@ -12,6 +13,19 @@ const nodeStyles = [
       'transition-duration': '0.3s',
       'transition-timing-function': 'ease-in-sine',
       'background-color': COLORS.purp,
+    },
+  },
+  {
+    selector: '.selected',
+    style: {
+      'background-color': COLORS.gren,
+    },
+  },
+  {
+    selector: '.source',
+    style: {
+      'border-width': '2px',
+      'border-style': 'dotted',
     },
   },
 ]
