@@ -1,6 +1,6 @@
 import './App.css'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import Graph from './components/Graph'
@@ -16,7 +16,6 @@ const App: React.FunctionComponent = () => {
   const [isFullScreen, setFullScreen] = useState(false)
   const [isGenTabHidden, setHiddenGenTab] = useState(false)
   const [isAlgTabHidden, setHiddenAlgTab] = useState(true)
-  // add, delete and source (for edge creation)
   const [elemActions, setElemActions] = useState<ElemAction>({
     selected: '',
     add: '',
