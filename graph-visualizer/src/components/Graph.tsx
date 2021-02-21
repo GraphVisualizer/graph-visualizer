@@ -101,17 +101,17 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
       graph.current.elements().removeClass('alg')
 
       if (algActions === 'kruskal') {
-        // graph.current
-        //   .elements()
-        //   .kruskal(() => 1)
-        //   .addClass('alg')
-      }
-
-      if (algActions === 'prim') {
         graph.current
           .elements()
           .kruskal(() => 1)
           .addClass('alg')
+      }
+
+      if (algActions === 'prim') {
+        // graph.current
+        //   .elements()
+        //   .kruskal(() => 1)
+        //   .addClass('alg')
       }
 
       if (algActions === 'djikstra') {

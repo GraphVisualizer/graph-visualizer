@@ -152,13 +152,13 @@ const App: React.FunctionComponent = () => {
           <div className={isAlgTabHidden ? 'page hide' : 'page'} id="algorithms">
             <div>
               <button onClick={() => setAlgActions('djikstra')}>
-                <h3>Djikstras Algorithm</h3>
+                <h3>Djikstras Algorithm - in progress</h3>
               </button>
               <button onClick={() => setAlgActions('kruskal')}>
                 <h3>Minimum Spanning Tree</h3>
               </button>
               <button onClick={() => setAlgActions('prim')}>
-                <h3>Prim&#39;s Algorithm</h3>
+                <h3>Prim&#39;s Algorithm - in progress</h3>
               </button>
               <button onClick={() => setAlgActions('')}>
                 <h3>Clear</h3>
