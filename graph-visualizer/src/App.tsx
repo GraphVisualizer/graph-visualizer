@@ -13,7 +13,7 @@ export interface ElemAction {
   destroy: string
 }
 
-export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | ''
+export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | 'bfs' | ''
 
 const App: React.FunctionComponent = () => {
   const [isFullScreen, setFullScreen] = useState(false)
@@ -156,6 +156,9 @@ const App: React.FunctionComponent = () => {
               </button>
               <button onClick={() => setAlgActions('karger')}>
                 <h3>Cut Vertices</h3>
+              </button>
+              <button onClick={() => setAlgActions('bfs')}>
+                <h3>Breadth First Search</h3>
               </button>
               <button onClick={() => setAlgActions('')}>
                 <h3>Clear</h3>

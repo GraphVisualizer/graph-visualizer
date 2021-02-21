@@ -109,11 +109,13 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions,
         graph.current.elements().hopcroftTarjanBiconnected().cut?.addClass('alg')
       }
 
-      if (algActions === 'djikstra') {
-        // graph.current
-        //   .elements()
-        //   .kruskal(() => 1)
-        //   .addClass('alg')
+      if (algActions === 'bfs' && elemActions.source !== '') {
+        graph.current.elements().bfs({
+          roots: elemActions.source,
+          visit: (v, e, u, i, depth) => {
+            v.addClass('alg')
+          },
+        })
       }
 
       layout.current = graph.current.elements().makeLayout({
