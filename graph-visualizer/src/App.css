@@ -89,6 +89,10 @@ section.interface {
   border-bottom: 1px solid black;
 }
 
+.tabs span {
+  margin: 1rem;
+}
+
 section.interface div.head {
   height: 3vh;
   width: 10vw;
@@ -143,8 +147,13 @@ section.interface button:focus {
   max-height: 0;
 }
 
+#algorithms {
+  height: 70vh;
+}
+
 #algorithms div {
-  height: 40vh;
+  height: 70vh;
+  padding-left: 1vw;
 }
 
 #algorithms button {

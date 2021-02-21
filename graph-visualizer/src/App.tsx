@@ -74,19 +74,11 @@ const App: React.FunctionComponent = () => {
       <div className="main flex-row">
         <section className={isFullScreen ? 'visual fullscreen' : 'visual'}>
           <Graph elemActions={elemActions} setElemActions={setElemActions} algActions={algActions} />
-          <svg
-            onClick={expandVisual}
-            width="28"
-            height="31"
-            viewBox="0 0 38 31"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          />
         </section>
         <section className="interface flex-column">
           <div className="tabs">
-            <button disabled>General</button>
-            <button disabled>Algorithms</button>
+            <span>General</span>
+            <span>Algorithms</span>
             <button onClick={toggleTabs}>Toggle</button>
           </div>
           <div className={isGenTabHidden ? 'page hide' : 'page'} id="general">
