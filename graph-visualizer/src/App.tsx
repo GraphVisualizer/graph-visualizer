@@ -10,6 +10,7 @@ export interface ElemAction {
   add: string
   delete: string
   source: string
+  destroy: string
 }
 
 const App: React.FunctionComponent = () => {
@@ -22,6 +23,7 @@ const App: React.FunctionComponent = () => {
     add: '',
     delete: '',
     source: '',
+    destroy: '',
   })
 
   const addNode = () => {
@@ -52,6 +54,7 @@ const App: React.FunctionComponent = () => {
   }
 
   const clearGraph = () => {
+    if (!isGraphCleared) setElemActions({ ...elemActions, destroy: 'destroy' })
     setIsGraphCleared(!isGraphCleared)
   }
 
