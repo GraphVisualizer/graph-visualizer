@@ -12,6 +12,8 @@ export interface ElemAction {
   source: string
 }
 
+export type AlgAction = 'kruskal' | 'prim' | 'djikstra' | ''
+
 const App: React.FunctionComponent = () => {
   const [isFullScreen, setFullScreen] = useState(false)
   const [isGenTabHidden, setHiddenGenTab] = useState(false)
@@ -23,6 +25,7 @@ const App: React.FunctionComponent = () => {
     delete: '',
     source: '',
   })
+  const [algActions, setAlgActions] = useState<AlgAction>('')
 
   const addNode = () => {
     setElemActions({
@@ -67,7 +70,7 @@ const App: React.FunctionComponent = () => {
       </nav>
       <div className="main flex-row">
         <section className={isFullScreen ? 'visual fullscreen' : 'visual'}>
-          <Graph elemActions={elemActions} setElemActions={setElemActions} />
+          <Graph elemActions={elemActions} setElemActions={setElemActions} algActions={algActions} />
           <svg
             onClick={expandVisual}
             width="28"
@@ -145,14 +148,17 @@ const App: React.FunctionComponent = () => {
           </div>
           <div className={isAlgTabHidden ? 'page hide' : 'page'} id="algorithms">
             <div>
-              <button>
+              <button onClick={() => setAlgActions('djikstra')}>
                 <h3>Djikstras Algorithm</h3>
               </button>
-              <button>
+              <button onClick={() => setAlgActions('kruskal')}>
                 <h3>Minimum Spanning Tree</h3>
               </button>
-              <button>
+              <button onClick={() => setAlgActions('prim')}>
                 <h3>Prim&#39;s Algorithm</h3>
+              </button>
+              <button onClick={() => setAlgActions('')}>
+                <h3>Clear</h3>
               </button>
             </div>
           </div>

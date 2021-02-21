@@ -3,15 +3,16 @@ import cola from 'cytoscape-cola'
 import React, { useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { ElemAction } from '../App'
+import { AlgAction, ElemAction } from '../App'
 import style from './style'
 
 interface GraphProps {
   elemActions: ElemAction
   setElemActions: React.Dispatch<React.SetStateAction<ElemAction>>
+  algActions: AlgAction
 }
 
-const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions }: GraphProps) => {
+const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions, algActions }: GraphProps) => {
   const container = useRef<HTMLDivElement>(null)
   const graph = useRef<cytoscape.Core>()
   const layout = useRef<cytoscape.Layouts>()
@@ -84,6 +85,42 @@ const App: React.FunctionComponent<GraphProps> = ({ elemActions, setElemActions 
       layout.current.run()
     }
   }, [elemActions.delete, elemActions.add, elemActions.source])
+
+  useEffect(() => {
+    if (graph.current) {
+      if (layout.current) {
+        layout.current.stop()
+      }
+
+      graph.current.elements().removeClass('alg')
+
+      if (algActions === 'kruskal') {
+        // graph.current
+        //   .elements()
+        //   .kruskal(() => 1)
+        //   .addClass('alg')
+      }
+
+      if (algActions === 'prim') {
+        graph.current
+          .elements()
+          .kruskal(() => 1)
+          .addClass('alg')
+      }
+
+      if (algActions === 'djikstra') {
+        // graph.current
+        //   .elements()
+        //   .kruskal(() => 1)
+        //   .addClass('alg')
+      }
+
+      layout.current = graph.current.elements().makeLayout({
+        name: 'cola',
+      })
+      layout.current.run()
+    }
+  }, [algActions])
 
   useEffect(() => {
     if (!container.current) {

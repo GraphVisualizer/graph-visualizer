@@ -2,7 +2,8 @@ import { Stylesheet } from 'cytoscape'
 
 const COLORS = {
   purp: '#43447a',
-  gren: '#00FF00',
+  green: '#00FF00',
+  red: '#FF0000',
 }
 
 const nodeStyles = [
@@ -18,7 +19,7 @@ const nodeStyles = [
   {
     selector: '.selected',
     style: {
-      'background-color': COLORS.gren,
+      'background-color': COLORS.green,
     },
   },
   {
@@ -26,6 +27,12 @@ const nodeStyles = [
     style: {
       'border-width': '2px',
       'border-style': 'dotted',
+    },
+  },
+  {
+    selector: 'node.alg',
+    style: {
+      'background-color': COLORS.red,
     },
   },
 ]
@@ -37,6 +44,12 @@ const edgeStyles = [
       // 'target-arrow-shape': 'triangle',
       // 'target-arrow-color': COLORS.purp,
       'line-color': COLORS.purp,
+    },
+  },
+  {
+    selector: 'edge.alg',
+    style: {
+      'line-color': COLORS.red,
     },
   },
 ]
