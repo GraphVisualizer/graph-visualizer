@@ -13,7 +13,6 @@ export interface ElemAction {
 }
 
 const App: React.FunctionComponent = () => {
-  const [generation, setGeneration] = useState(0)
   const [isFullScreen, setFullScreen] = useState(false)
   const [isGenTabHidden, setHiddenGenTab] = useState(false)
   const [isAlgTabHidden, setHiddenAlgTab] = useState(true)
