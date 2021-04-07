@@ -1,0 +1,23 @@
+#general button:first-child {
+    margin-bottom: 3vh;
+}
+
+
+section.interface button {
+    height: 3.5vh;
+    width: 4.5vw;
+    padding: 0.15rem 0.25rem;
+    border-radius: 11px;
+    border: white;
+    margin-top: 3vh;
+    margin-left: 0.5vw;
+}
+
+section.interface button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+section.interface button:focus {
+    cursor: pointer;
+}

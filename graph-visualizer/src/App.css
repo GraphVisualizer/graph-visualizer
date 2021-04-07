@@ -97,11 +97,6 @@ section.interface div.head {
   height: 3vh;
   width: 10vw;
 }
-
-#general button:first-child {
-  margin-bottom: 3vh;
-}
-
 #addNode {
   margin-top: 3vh;
 }
@@ -111,35 +106,9 @@ section.interface svg {
   width: 2vw;
 }
 
-section.interface button {
-  height: 3.5vh;
-  width: 4.5vw;
-  padding: 0.15rem 0.25rem;
-  border-radius: 11px;
-  border: white;
-  margin-top: 3vh;
-  margin-left: 0.5vw;
-}
-
-section.interface button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-section.interface button:focus {
-  cursor: pointer;
-}
-
 .tooltip:hover {
   transform: scale(1.2);
   cursor: pointer;
-}
-
-.fullscreen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
 }
 
 .hide {
