@@ -9,6 +9,8 @@
     "cytoscape": "^3.18.0",
     "cytoscape-cola": "^2.4.0",
     "lodash": "^4.17.21",
+    "mobx": "^6.2.0",
+    "mobx-react-lite": "^3.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",

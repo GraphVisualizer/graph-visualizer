@@ -5,10 +5,13 @@ import ReactDOM from 'react-dom'
 
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { DataStoreProvider } from './store/context'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <DataStoreProvider>
+      <App />
+    </DataStoreProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 )

@@ -70,7 +70,7 @@ const App: React.FunctionComponent = () => {
       </nav>
       <div className="main flex-row">
         <section className="visual">
-          <Graph elemActions={elemActions} setElemActions={setElemActions} algActions={algActions} />
+          <Graph />
         </section>
         <section className="interface flex-column">
           <div className="tabs">
