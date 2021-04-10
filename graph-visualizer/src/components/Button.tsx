@@ -3,7 +3,7 @@ import '../Button.css'
 import React from 'react'
 
 interface ButtonProps {
-  innerText: string | Element
+  innerText: string | React.ReactElement
   action: () => void
 }
 

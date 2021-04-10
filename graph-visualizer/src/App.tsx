@@ -106,21 +106,21 @@ const App: React.FunctionComponent = () => {
             <div>
               <Button
                 action={() => setAlgActions('kruskal')}
-                innerText={((<h3>Minimum Spanning Tree</h3>) as unknown) as Element}
+                innerText={(<h3>Minimum Spanning Tree</h3>) as React.ReactElement}
               />
               <Button
                 action={() => setAlgActions('karger')}
-                innerText={((<h3>Cut Vertices</h3>) as unknown) as Element}
+                innerText={(<h3>Cut Vertices</h3>) as React.ReactElement}
               />
               <Button
                 action={() => setAlgActions('bfs')}
-                innerText={((<h3>Breadth First Search</h3>) as unknown) as Element}
+                innerText={(<h3>Breadth First Search</h3>) as React.ReactElement}
               />
               <Button
                 action={() => setAlgActions('dfs')}
-                innerText={((<h3>Depth First Search</h3>) as unknown) as Element}
+                innerText={(<h3>Depth First Search</h3>) as React.ReactElement}
               />
-              <Button action={() => setAlgActions('')} innerText={((<h3>Clear</h3>) as unknown) as Element} />
+              <Button action={() => setAlgActions('')} innerText={(<h3>Clear</h3>) as React.ReactElement} />
             </div>
           </div>
         </section>
