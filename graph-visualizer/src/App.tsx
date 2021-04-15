@@ -3,7 +3,7 @@ import './App.css'
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import Button from './components/Button'
+import Button from './components/atoms/Button'
 import Graph from './components/Graph'
 import Tooltip from './components/Tooltip'
 
@@ -70,7 +70,7 @@ const App: React.FunctionComponent = () => {
       </nav>
       <div className="main flex-row">
         <section className="visual">
-          <Graph elemActions={elemActions} setElemActions={setElemActions} algActions={algActions} />
+          <Graph />
         </section>
         <section className="interface flex-column">
           <div className="tabs">
