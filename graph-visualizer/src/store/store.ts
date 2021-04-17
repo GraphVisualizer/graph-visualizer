@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 export function createStore() {
   return {
     graph: cytoscape({
+      elements: [],
       style: [
         {
           selector: 'node',
@@ -14,11 +15,25 @@ export function createStore() {
       maxZoom: 1,
       wheelSensitivity: 0.2,
     }),
-    addNode(item: string) {
-      this.graph.add({ data: { id: item } })
+    addNode() {
+      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
+        this.graph?.$('.selected').removeClass('selected')
+        event.target.addClass('selected')
+      })
     },
-    addEdge(e1: string, e2: string) {
-      this.graph.add({ data: { id: uuidv4(), source: e1, target: e2 } })
+    addEdge() {
+      // TODO
+      /*
+      this.graph.on('tap', (event) => {
+        this.graph.add({ data: { id: uuidv4(), source: this.graph?.$('.selected').id(), target: event.target.id() } })
+      })
+      */
+    },
+    deleteNode() {
+      this.graph.remove(this.graph?.$('.selected').id())
+    },
+    destroyGraph() {
+      this.graph.destroy()
     },
   }
 }
