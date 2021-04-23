@@ -11,7 +11,7 @@ export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | 'bfs' | 'dfs' | ''
 
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
-  const { addNode, addEdge, deleteNode, destroyGraph } = store
+  const { addNode, addEdge, deleteNode, destroyGraph, listenForClick } = store
 
   const [isGenTabHidden, setHiddenGenTab] = useState(false)
   const [isAlgTabHidden, setHiddenAlgTab] = useState(true)
@@ -40,7 +40,7 @@ const App: React.FunctionComponent = () => {
         </ul>
       </nav>
       <div className="main flex-row">
-        <section className="visual">
+        <section className="visual" /* onClick={listenForClick} */>
           <Graph />
         </section>
         <section className="interface flex-column">

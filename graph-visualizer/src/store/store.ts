@@ -15,19 +15,31 @@ export function createStore() {
       maxZoom: 1,
       wheelSensitivity: 0.2,
     }),
-    addNode() {
-      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
+    listenForClick() {
+      this.graph.on('tap', 'node', (event) => {
         this.graph?.$('.selected').removeClass('selected')
         event.target.addClass('selected')
       })
     },
-    addEdge() {
-      // TODO
-      /*
-      this.graph.on('tap', (event) => {
-        this.graph.add({ data: { id: uuidv4(), source: this.graph?.$('.selected').id(), target: event.target.id() } })
+    addNode() {
+      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
+        this.graph?.$('.selected').removeClass('selected')
+        event.target.addClass('selected')
+        this.graph.center(event.target)
       })
-      */
+    },
+    addEdge() {
+      this.graph.on('tap', 'node', (event) => {
+        this.graph?.$('.selected').removeClass('selected')
+        event.target.addClass('selected')
+        const sourceId = this.graph?.$('.selected').id()
+        this.graph.on('tap', 'node', (evt) => {
+          this.graph?.$('.selected').removeClass('selected')
+          evt.target.addClass('selected')
+          const targetId = evt.target.addClass('selected').id()
+          this.graph.add({ data: { id: uuidv4(), source: sourceId, target: targetId } })
+        })
+      })
     },
     deleteNode() {
       this.graph.remove(this.graph?.$('.selected').id())
