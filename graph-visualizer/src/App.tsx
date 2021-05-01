@@ -43,7 +43,7 @@ const App: React.FunctionComponent = () => {
               <Button action={() => setIsAlgTabOn(true)} innerText="Algorithms" />
             </span>
           </div>
-          {isAlgTabOn ? (
+          {!isAlgTabOn ? (
             <div className={'page'} id="general">
               <button onClick={() => null}>Clear</button>
               <div id="addNode">
