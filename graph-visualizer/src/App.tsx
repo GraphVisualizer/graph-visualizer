@@ -18,45 +18,7 @@ export interface ElemAction {
 export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | 'bfs' | 'dfs' | ''
 
 const App: React.FunctionComponent = () => {
-  const [isGenTabHidden, setHiddenGenTab] = useState(false)
-  const [isAlgTabHidden, setHiddenAlgTab] = useState(true)
-  const [isGraphCleared, setIsGraphCleared] = useState(false)
-  const [elemActions, setElemActions] = useState<ElemAction>({
-    selected: '',
-    add: '',
-    delete: '',
-    source: '',
-    destroy: '',
-  })
-  const [algActions, setAlgActions] = useState<AlgAction>('')
-
-  const addNode = () => {
-    setElemActions({
-      ...elemActions,
-      add: `node-${uuidv4()}`,
-    })
-  }
-
-  const delNode = () => {
-    setElemActions({
-      ...elemActions,
-      delete: elemActions.selected,
-    })
-  }
-
-  const addEdge = () => {
-    setElemActions({ ...elemActions, source: elemActions.selected, selected: '' })
-  }
-
-  const toggleTabs = () => {
-    setHiddenGenTab(!isGenTabHidden)
-    setHiddenAlgTab(!isAlgTabHidden)
-  }
-
-  const clearGraph = () => {
-    if (!isGraphCleared) setElemActions({ ...elemActions, destroy: 'destroy' })
-    setIsGraphCleared(!isGraphCleared)
-  }
+  const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
   return (
     <div className="App">
@@ -74,55 +36,49 @@ const App: React.FunctionComponent = () => {
         </section>
         <section className="interface flex-column">
           <div className="tabs">
-            <span>General</span>
-            <span>Algorithms</span>
-            <Button action={toggleTabs} innerText="Toggle" />
+            <span>
+              <Button action={() => setIsAlgTabOn(false)} innerText="General" />
+            </span>
+            <span>
+              <Button action={() => setIsAlgTabOn(true)} innerText="Algorithms" />
+            </span>
           </div>
-          <div className={isGenTabHidden ? 'page hide' : 'page'} id="general">
-            <button onClick={clearGraph}>Clear</button>
-            <div id="addNode">
-              <div className="flex-row head">
-                <h3>Add node</h3>
-                <Tooltip />
+          {!isAlgTabOn ? (
+            <div className={'page'} id="general">
+              <button onClick={() => null}>Clear</button>
+              <div id="addNode">
+                <div className="flex-row head">
+                  <h3>Add node</h3>
+                  <Tooltip />
+                </div>
+                <Button action={() => null} innerText="Add" />
               </div>
-              <Button action={addNode} innerText="Add" />
-            </div>
-            <div id="delNode">
-              <div className="flex-row head">
-                <h3>Delete node</h3>
-                <Tooltip />
+              <div id="delNode">
+                <div className="flex-row head">
+                  <h3>Delete node</h3>
+                  <Tooltip />
+                </div>
+                <Button action={() => null} innerText="Delete" />
               </div>
-              <Button action={delNode} innerText="Delete" />
-            </div>
-            <div id="addEdge">
-              <div className="flex-row head">
-                <h3>Add edge</h3>
-                <Tooltip />
+              <div id="addEdge">
+                <div className="flex-row head">
+                  <h3>Add edge</h3>
+                  <Tooltip />
+                </div>
+                <Button action={() => null} innerText="Add" />
               </div>
-              <Button action={addEdge} innerText="Add" />
             </div>
-          </div>
-          <div className={isAlgTabHidden ? 'page hide' : 'page'} id="algorithms">
-            <div>
-              <Button
-                action={() => setAlgActions('kruskal')}
-                innerText={(<h3>Minimum Spanning Tree</h3>) as React.ReactElement}
-              />
-              <Button
-                action={() => setAlgActions('karger')}
-                innerText={(<h3>Cut Vertices</h3>) as React.ReactElement}
-              />
-              <Button
-                action={() => setAlgActions('bfs')}
-                innerText={(<h3>Breadth First Search</h3>) as React.ReactElement}
-              />
-              <Button
-                action={() => setAlgActions('dfs')}
-                innerText={(<h3>Depth First Search</h3>) as React.ReactElement}
-              />
-              <Button action={() => setAlgActions('')} innerText={(<h3>Clear</h3>) as React.ReactElement} />
+          ) : (
+            <div className={'page'} id="algorithms">
+              <div>
+                <Button action={() => null} innerText={(<h3>Minimum Spanning Tree</h3>) as React.ReactElement} />
+                <Button action={() => null} innerText={(<h3>Cut Vertices</h3>) as React.ReactElement} />
+                <Button action={() => null} innerText={(<h3>Breadth First Search</h3>) as React.ReactElement} />
+                <Button action={() => null} innerText={(<h3>Depth First Search</h3>) as React.ReactElement} />
+                <Button action={() => null} innerText={(<h3>Clear</h3>) as React.ReactElement} />
+              </div>
             </div>
-          </div>
+          )}
         </section>
       </div>
     </div>
