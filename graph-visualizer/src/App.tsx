@@ -40,7 +40,7 @@ const App: React.FunctionComponent = () => {
         </ul>
       </nav>
       <div className="main flex-row">
-        <section className="visual" /* onClick={listenForClick} */>
+        <section className="visual" onClick={listenForClick}>
           <Graph />
         </section>
         <section className="interface flex-column">
