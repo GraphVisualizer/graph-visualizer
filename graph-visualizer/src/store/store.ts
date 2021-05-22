@@ -12,6 +12,7 @@ export function createStore() {
     ready: undefined, // callback on layoutready
     stop: undefined, // callback on layoutstop
   }
+  let edgeFlag = false
 
   return {
     graph: cytoscape({
@@ -25,43 +26,31 @@ export function createStore() {
       maxZoom: 1,
       wheelSensitivity: 0.2,
     }),
-    listenForClick() {
-      // reset event listeners
-      this.graph.removeListener('tap')
-      this.graph.on('tap', 'node', (event) => {
-        this.graph?.$('.selected').removeClass('selected')
-        event.target.addClass('selected')
-      })
-    },
     addNode() {
-      // reset event listeners
-      this.graph.removeListener('tap')
-      this.graph.add({ data: { id: uuidv4() } }).on('tap', 'node', (event) => {
-        this.graph?.$('.selected').removeClass('selected')
-        event.target.addClass('selected')
+      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
+        if (edgeFlag) {
+          const sourceId = this.graph?.$('.selected').id()
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.add({ data: { id: uuidv4(), source: sourceId, target: event.target.id() } })
+          edgeFlag = !edgeFlag
+        } else {
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.elements().forEach((elem) => {
+            if (elem.id() === event.target.id()) elem.addClass('selected')
+          })
+        }
       })
       this.graph.elements().layout(options).run()
     },
     addEdge() {
-      // reset event listeners
-      this.graph.removeListener('tap')
-      // get ID of currently selected node
-      const sourceId = this.graph?.$('.selected').id()
-      // making sure we only add edge if we have a node selected first
-      if (sourceId !== undefined) {
-        this.graph?.$('.selected').removeClass('selected')
-        this.graph.on('tap', 'node', (event) => {
-          event.target.addClass('new-edge')
-          const newId = this.graph?.$('.new-edge').id()
-          this.graph.add({ data: { id: uuidv4(), source: sourceId, target: newId } })
-          this.graph?.$('.new-edge').removeClass('new-edge')
-        })
-      }
+      edgeFlag = !edgeFlag
     },
     deleteNode() {
       const sourceId = this.graph?.$('.selected').id()
-      // making sure we only delete node if we have a node selected first
-      if (sourceId !== undefined) this.graph.remove(this.graph?.$('.selected').id())
+      this.graph?.$('.selected').removeClass('selected')
+      this.graph.elements().forEach((elem) => {
+        if (elem.id() === sourceId) this.graph.remove(elem)
+      })
     },
     destroyGraph() {
       this.graph.destroy()
