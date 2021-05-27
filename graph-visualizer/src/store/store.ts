@@ -43,9 +43,12 @@ export function createStore() {
     addEdge(e1: string, e2: string) {
       this.graph.add({ data: { id: uuidv4(), source: e1, target: e2 } })
     },
+    deleteEdge() {
+      this.graph.remove('edge:selected')
+    },
     bfs() {
       this.graph.elements().bfs({
-        roots: `#elemActions.selected`,
+        roots: `node:selected`,
         visit: (v, e, u, i, depth) => {
           setTimeout(() => v.addClass('alg'), 1000 * depth)
         },
