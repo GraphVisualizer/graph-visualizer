@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 import Button from './components/atoms/Button'
 import Graph from './components/Graph'
+import AdjacencyImportForm from './components/organisms/AdjacencyImportForm'
 import Tooltip from './components/Tooltip'
 import { useDataStore } from './store/context'
 
@@ -70,6 +71,7 @@ const App: React.FunctionComponent = () => {
                 </div>
                 <Button onClick={() => null}>Add</Button>
               </div>
+              <AdjacencyImportForm />
             </div>
           ) : (
             <div className={'page'} id="algorithms">
