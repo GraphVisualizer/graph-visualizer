@@ -27,8 +27,18 @@ export function createStore() {
         },
       ],
       maxZoom: 1,
-      wheelSensitivity: 0.2,
     }),
+
+    mount: {} as HTMLDivElement,
+
+    resetGraph() {
+      this.graph.destroy()
+      this.graph = cytoscape({ style: defaultStyle, maxZoom: 1 })
+      this.createLayout({
+        name: 'cola',
+      })
+      this.graph.mount(this.mount)
+    },
 
     layout: {} as cytoscape.Layouts,
     createLayout(options: cytoscape.LayoutOptions) {
@@ -37,6 +47,7 @@ export function createStore() {
     refreshLayout() {
       this.layout.run()
     },
+
     addNode(item: string) {
       this.graph.add({ data: { id: item } })
     },
@@ -50,6 +61,31 @@ export function createStore() {
           setTimeout(() => v.addClass('alg'), 1000 * depth)
         },
       })
+    },
+    complete(n: number) {
+      this.resetGraph()
+      for (let i = 0; i < n; i += 1) {
+        const newNode = uuidv4()
+        const connectors = this.graph.nodes()
+        this.addNode(newNode)
+        connectors.forEach((connector) => {
+          this.addEdge(connector.id(), newNode)
+        })
+      }
+      this.refreshLayout()
+    },
+    star(v: number) {
+      this.resetGraph()
+
+      const center = uuidv4()
+      this.addNode(center)
+
+      for (let i = 0; i < v; i += 1) {
+        const newLeg = uuidv4()
+        this.addNode(newLeg)
+        this.addEdge(center, newLeg)
+      }
+      this.refreshLayout()
     },
   }
 

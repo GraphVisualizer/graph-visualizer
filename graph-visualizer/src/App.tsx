@@ -1,11 +1,11 @@
 import './App.css'
 
 import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import Button from './components/atoms/Button'
 import Graph from './components/Graph'
 import Tooltip from './components/Tooltip'
+import { useDataStore } from './store/context'
 
 export interface ElemAction {
   selected: string
@@ -19,6 +19,9 @@ export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | 'bfs' | 'dfs' | ''
 
 const App: React.FunctionComponent = () => {
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
+
+  const store = useDataStore()
+  const { complete, star } = store
 
   return (
     <div className="App">
@@ -76,6 +79,8 @@ const App: React.FunctionComponent = () => {
                 <Button action={() => null} innerText={(<h3>Breadth First Search</h3>) as React.ReactElement} />
                 <Button action={() => null} innerText={(<h3>Depth First Search</h3>) as React.ReactElement} />
                 <Button action={() => null} innerText={(<h3>Clear</h3>) as React.ReactElement} />
+                <Button action={() => complete(5)} innerText={(<h3>Complete n=5</h3>) as React.ReactElement} />
+                <Button action={() => star(10)} innerText={(<h3>Star v=10</h3>) as React.ReactElement} />
               </div>
             </div>
           )}
