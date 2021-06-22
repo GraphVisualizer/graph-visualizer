@@ -8,21 +8,11 @@ import AdjacencyImportForm from './components/organisms/AdjacencyImportForm'
 import Tooltip from './components/Tooltip'
 import { useDataStore } from './store/context'
 
-export interface ElemAction {
-  selected: string
-  add: string
-  delete: string
-  source: string
-  destroy: string
-}
-
-export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | 'bfs' | 'dfs' | ''
-
 const App: React.FunctionComponent = () => {
-  const [isAlgTabOn, setIsAlgTabOn] = useState(false)
-
   const store = useDataStore()
-  const { bfs, deleteEdge } = store
+  const { bfs } = store
+
+  const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
   return (
     <div className="App">

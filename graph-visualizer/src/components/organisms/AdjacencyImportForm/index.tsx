@@ -39,10 +39,10 @@ const App: React.FunctionComponent = () => {
       }
 
       nodeList.forEach((val) => {
-        store.addNode(val)
+        store.graph.add({ data: { id: val } })
       })
       edgeList.forEach((edge) => {
-        store.addEdge(nodeList.get(edge[0]) as string, nodeList.get(edge[1]) as string)
+        store.graph.add({ data: { id: uuidv4(), source: nodeList.get(edge[0]), target: nodeList.get(edge[1]) } })
       })
 
       // eslint-disable-next-line no-alert

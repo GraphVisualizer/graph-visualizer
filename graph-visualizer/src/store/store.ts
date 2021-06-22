@@ -8,6 +8,8 @@ import defaultStyle from './style'
 export function createStore() {
   cytoscape.use(cola)
 
+  let edgeFlag = false
+
   const store = {
     graph: cytoscape({
       style: defaultStyle,
@@ -37,11 +39,42 @@ export function createStore() {
     refreshLayout() {
       this.layout.run()
     },
-    addNode(item: string) {
-      this.graph.add({ data: { id: item } })
+    addNode() {
+      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
+        if (edgeFlag) {
+          const sourceId = this.graph?.$('.selected').id()
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.add({ data: { id: uuidv4(), source: sourceId, target: event.target.id() } })
+          edgeFlag = !edgeFlag
+        } else {
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.elements().forEach((elem) => {
+            if (elem.id() === event.target.id()) elem.addClass('selected')
+          })
+        }
+      })
+      this.graph
+        .elements()
+        .layout({
+          name: 'random',
+
+          fit: true, // whether to fit to viewport
+          padding: 20, // fit padding
+          boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+          ready: undefined, // callback on layoutready
+          stop: undefined, // callback on layoutstop
+        })
+        .run()
     },
-    addEdge(e1: string, e2: string) {
-      this.graph.add({ data: { id: uuidv4(), source: e1, target: e2 } })
+    addEdge() {
+      edgeFlag = !edgeFlag
+    },
+    deleteNode() {
+      const sourceId = this.graph?.$('.selected').id()
+      this.graph?.$('.selected').removeClass('selected')
+      this.graph.elements().forEach((elem) => {
+        if (elem.id() === sourceId) this.graph.remove(elem)
+      })
     },
     deleteEdge() {
       this.graph.remove('edge:selected')
