@@ -8,6 +8,8 @@ import defaultStyle from './style'
 export function createStore() {
   cytoscape.use(cola)
 
+  let edgeFlag = false
+
   const store = {
     graph: cytoscape({
       style: defaultStyle,
@@ -47,16 +49,49 @@ export function createStore() {
     refreshLayout() {
       this.layout.run()
     },
+    addNode() {
+      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
+        if (edgeFlag) {
+          const sourceId = this.graph?.$('.selected').id()
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.add({ data: { id: uuidv4(), source: sourceId, target: event.target.id() } })
+          edgeFlag = !edgeFlag
+        } else {
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.elements().forEach((elem) => {
+            if (elem.id() === event.target.id()) elem.addClass('selected')
+          })
+        }
+      })
+      this.graph
+        .elements()
+        .layout({
+          name: 'random',
 
-    addNode(item: string) {
-      this.graph.add({ data: { id: item } })
+          fit: true, // whether to fit to viewport
+          padding: 20, // fit padding
+          boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+          ready: undefined, // callback on layoutready
+          stop: undefined, // callback on layoutstop
+        })
+        .run()
     },
-    addEdge(e1: string, e2: string) {
-      this.graph.add({ data: { id: uuidv4(), source: e1, target: e2 } })
+    addEdge() {
+      edgeFlag = !edgeFlag
+    },
+    deleteNode() {
+      const sourceId = this.graph?.$('.selected').id()
+      this.graph?.$('.selected').removeClass('selected')
+      this.graph.elements().forEach((elem) => {
+        if (elem.id() === sourceId) this.graph.remove(elem)
+      })
+    },
+    deleteEdge() {
+      this.graph.remove('edge:selected')
     },
     bfs() {
       this.graph.elements().bfs({
-        roots: `#elemActions.selected`,
+        roots: `node:selected`,
         visit: (v, e, u, i, depth) => {
           setTimeout(() => v.addClass('alg'), 1000 * depth)
         },
@@ -67,9 +102,9 @@ export function createStore() {
       for (let i = 0; i < n; i += 1) {
         const newNode = uuidv4()
         const connectors = this.graph.nodes()
-        this.addNode(newNode)
+        this.graph.add({ data: { id: newNode } })
         connectors.forEach((connector) => {
-          this.addEdge(connector.id(), newNode)
+          this.graph.add({ data: { id: uuidv4(), source: connector.id(), target: newNode } })
         })
       }
       this.refreshLayout()
@@ -78,12 +113,12 @@ export function createStore() {
       this.resetGraph()
 
       const center = uuidv4()
-      this.addNode(center)
+      this.graph.add({ data: { id: center } })
 
       for (let i = 0; i < v; i += 1) {
         const newLeg = uuidv4()
-        this.addNode(newLeg)
-        this.addEdge(center, newLeg)
+        this.graph.add({ data: { id: newLeg } })
+        this.graph.add({ data: { id: uuidv4(), source: center, target: newLeg } })
       }
       this.refreshLayout()
     },

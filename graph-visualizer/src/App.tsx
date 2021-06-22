@@ -4,24 +4,15 @@ import React, { useState } from 'react'
 
 import Button from './components/atoms/Button'
 import Graph from './components/Graph'
+import AdjacencyImportForm from './components/organisms/AdjacencyImportForm'
 import Tooltip from './components/Tooltip'
 import { useDataStore } from './store/context'
 
-export interface ElemAction {
-  selected: string
-  add: string
-  delete: string
-  source: string
-  destroy: string
-}
-
-export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | 'bfs' | 'dfs' | ''
-
 const App: React.FunctionComponent = () => {
-  const [isAlgTabOn, setIsAlgTabOn] = useState(false)
-
   const store = useDataStore()
-  const { complete, star } = store
+  const { bfs, complete, star } = store
+
+  const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
   return (
     <div className="App">
@@ -40,10 +31,10 @@ const App: React.FunctionComponent = () => {
         <section className="interface flex-column">
           <div className="tabs">
             <span>
-              <Button action={() => setIsAlgTabOn(false)} innerText="General" />
+              <Button onClick={() => setIsAlgTabOn(false)}>General</Button>
             </span>
             <span>
-              <Button action={() => setIsAlgTabOn(true)} innerText="Algorithms" />
+              <Button onClick={() => setIsAlgTabOn(true)}>Algorithms</Button>
             </span>
           </div>
           {!isAlgTabOn ? (
@@ -54,33 +45,44 @@ const App: React.FunctionComponent = () => {
                   <h3>Add node</h3>
                   <Tooltip />
                 </div>
-                <Button action={() => null} innerText="Add" />
+                <Button onClick={() => null}>Add</Button>
               </div>
               <div id="delNode">
                 <div className="flex-row head">
                   <h3>Delete node</h3>
                   <Tooltip />
                 </div>
-                <Button action={() => null} innerText="Delete" />
+                <Button onClick={() => null}>Delete</Button>
               </div>
               <div id="addEdge">
                 <div className="flex-row head">
                   <h3>Add edge</h3>
                   <Tooltip />
                 </div>
-                <Button action={() => null} innerText="Add" />
+                <Button onClick={() => null}>Add</Button>
               </div>
+              <AdjacencyImportForm />
             </div>
           ) : (
             <div className={'page'} id="algorithms">
               <div>
-                <Button action={() => null} innerText={(<h3>Minimum Spanning Tree</h3>) as React.ReactElement} />
-                <Button action={() => null} innerText={(<h3>Cut Vertices</h3>) as React.ReactElement} />
-                <Button action={() => null} innerText={(<h3>Breadth First Search</h3>) as React.ReactElement} />
-                <Button action={() => null} innerText={(<h3>Depth First Search</h3>) as React.ReactElement} />
-                <Button action={() => null} innerText={(<h3>Clear</h3>) as React.ReactElement} />
-                <Button action={() => complete(5)} innerText={(<h3>Complete n=5</h3>) as React.ReactElement} />
-                <Button action={() => star(10)} innerText={(<h3>Star v=10</h3>) as React.ReactElement} />
+                <Button onClick={() => null}>
+                  <h3>Minimum Spanning Tree</h3>
+                </Button>
+                <Button onClick={() => null}>
+                  <h3>Cut Vertices</h3>
+                </Button>
+                <Button onClick={() => bfs()}>
+                  <h3>Breadth First Search</h3>
+                </Button>
+                <Button onClick={() => null}>
+                  <h3>Depth First Search</h3>
+                </Button>
+                <Button onClick={() => null}>
+                  <h3>Clear</h3>
+                </Button>
+                <Button onClick={() => complete(5)}>Complete n=5</Button>
+                <Button onClick={() => star(10)}>Star v=10</Button>
               </div>
             </div>
           )}
