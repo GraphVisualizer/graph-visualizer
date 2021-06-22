@@ -6,42 +6,60 @@ import defaultStyle from './style'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createStore() {
-  cytoscape.use(cola)
 
-  const store = {
+  const options = {
+    name: 'random',
+
+    fit: true, // whether to fit to viewport
+    padding: 20, // fit padding
+    boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+    ready: undefined, // callback on layoutready
+    stop: undefined, // callback on layoutstop
+  }
+  let edgeFlag = false
+
+  return {
     graph: cytoscape({
-      style: defaultStyle,
-      elements: [
-        // list of graph elements to start with
+      elements: [],
+      style: [
         {
-          // node a
-          data: { id: 'a' },
-        },
-        {
-          // node b
-          data: { id: 'b' },
-        },
-        {
-          // edge ab
-          data: { id: 'ab', source: 'a', target: 'b' },
+          selector: 'node',
+          style: {},
+
         },
       ],
       maxZoom: 1,
       wheelSensitivity: 0.2,
     }),
+    addNode() {
+      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
+        if (edgeFlag) {
+          const sourceId = this.graph?.$('.selected').id()
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.add({ data: { id: uuidv4(), source: sourceId, target: event.target.id() } })
+          edgeFlag = !edgeFlag
+        } else {
+          this.graph?.$('.selected').removeClass('selected')
+          this.graph.elements().forEach((elem) => {
+            if (elem.id() === event.target.id()) elem.addClass('selected')
+          })
+        }
+      })
+      this.graph.elements().layout(options).run()
+    },
+    addEdge() {
+      edgeFlag = !edgeFlag
+    },
+    deleteNode() {
+      const sourceId = this.graph?.$('.selected').id()
+      this.graph?.$('.selected').removeClass('selected')
+      this.graph.elements().forEach((elem) => {
+        if (elem.id() === sourceId) this.graph.remove(elem)
+      })
 
-    layout: {} as cytoscape.Layouts,
-    createLayout(options: cytoscape.LayoutOptions) {
-      this.layout = this.graph.layout(options)
     },
-    refreshLayout() {
-      this.layout.run()
-    },
-    addNode(item: string) {
-      this.graph.add({ data: { id: item } })
-    },
-    addEdge(e1: string, e2: string) {
-      this.graph.add({ data: { id: uuidv4(), source: e1, target: e2 } })
+    destroyGraph() {
+      this.graph.destroy()
     },
     bfs() {
       this.graph.elements().bfs({
