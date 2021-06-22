@@ -6,31 +6,39 @@ import defaultStyle from './style'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createStore() {
+  cytoscape.use(cola)
 
-  const options = {
-    name: 'random',
-
-    fit: true, // whether to fit to viewport
-    padding: 20, // fit padding
-    boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-    ready: undefined, // callback on layoutready
-    stop: undefined, // callback on layoutstop
-  }
   let edgeFlag = false
 
-  return {
+  const store = {
     graph: cytoscape({
-      elements: [],
-      style: [
+      style: defaultStyle,
+      elements: [
+        // list of graph elements to start with
         {
-          selector: 'node',
-          style: {},
-
+          // node a
+          data: { id: 'a' },
+        },
+        {
+          // node b
+          data: { id: 'b' },
+        },
+        {
+          // edge ab
+          data: { id: 'ab', source: 'a', target: 'b' },
         },
       ],
       maxZoom: 1,
       wheelSensitivity: 0.2,
     }),
+
+    layout: {} as cytoscape.Layouts,
+    createLayout(options: cytoscape.LayoutOptions) {
+      this.layout = this.graph.layout(options)
+    },
+    refreshLayout() {
+      this.layout.run()
+    },
     addNode() {
       this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
         if (edgeFlag) {
@@ -45,7 +53,18 @@ export function createStore() {
           })
         }
       })
-      this.graph.elements().layout(options).run()
+      this.graph
+        .elements()
+        .layout({
+          name: 'random',
+
+          fit: true, // whether to fit to viewport
+          padding: 20, // fit padding
+          boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+          ready: undefined, // callback on layoutready
+          stop: undefined, // callback on layoutstop
+        })
+        .run()
     },
     addEdge() {
       edgeFlag = !edgeFlag
@@ -56,14 +75,13 @@ export function createStore() {
       this.graph.elements().forEach((elem) => {
         if (elem.id() === sourceId) this.graph.remove(elem)
       })
-
     },
-    destroyGraph() {
-      this.graph.destroy()
+    deleteEdge() {
+      this.graph.remove('edge:selected')
     },
     bfs() {
       this.graph.elements().bfs({
-        roots: `#elemActions.selected`,
+        roots: `node:selected`,
         visit: (v, e, u, i, depth) => {
           setTimeout(() => v.addClass('alg'), 1000 * depth)
         },

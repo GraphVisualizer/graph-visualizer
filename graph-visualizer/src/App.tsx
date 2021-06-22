@@ -4,30 +4,15 @@ import React, { useState } from 'react'
 
 import Button from './components/atoms/Button'
 import Graph from './components/Graph'
+import AdjacencyImportForm from './components/organisms/AdjacencyImportForm'
 import Tooltip from './components/Tooltip'
 import { useDataStore } from './store/context'
 
-export type AlgAction = 'kruskal' | 'karger' | 'djikstra' | 'bfs' | 'dfs' | ''
-
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
-  const { addNode, addEdge, deleteNode, destroyGraph } = store
+  const { bfs } = store
 
-  const [isGenTabHidden, setHiddenGenTab] = useState(false)
-  const [isAlgTabHidden, setHiddenAlgTab] = useState(true)
-  const [isGraphCleared, setIsGraphCleared] = useState(false)
-
-  const [algActions, setAlgActions] = useState<AlgAction>('')
-
-  const toggleTabs = () => {
-    setHiddenGenTab(!isGenTabHidden)
-    setHiddenAlgTab(!isAlgTabHidden)
-  }
-
-  const clearGraph = () => {
-    if (!isGraphCleared) destroyGraph()
-    setIsGraphCleared(!isGraphCleared)
-  }
+  const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
   return (
     <div className="App">
@@ -45,55 +30,60 @@ const App: React.FunctionComponent = () => {
         </section>
         <section className="interface flex-column">
           <div className="tabs">
-            <span>General</span>
-            <span>Algorithms</span>
-            <Button action={toggleTabs} innerText="Toggle" />
+            <span>
+              <Button onClick={() => setIsAlgTabOn(false)}>General</Button>
+            </span>
+            <span>
+              <Button onClick={() => setIsAlgTabOn(true)}>Algorithms</Button>
+            </span>
           </div>
-          <div className={isGenTabHidden ? 'page hide' : 'page'} id="general">
-            <button onClick={clearGraph}>Clear</button>
-            <div id="addNode">
-              <div className="flex-row head">
-                <h3>Add node</h3>
-                <Tooltip />
+          {!isAlgTabOn ? (
+            <div className={'page'} id="general">
+              <button onClick={() => null}>Clear</button>
+              <div id="addNode">
+                <div className="flex-row head">
+                  <h3>Add node</h3>
+                  <Tooltip />
+                </div>
+                <Button onClick={() => null}>Add</Button>
               </div>
-              <Button action={() => addNode()} innerText="Add" />
-            </div>
-            <div id="delNode">
-              <div className="flex-row head">
-                <h3>Delete node</h3>
-                <Tooltip />
+              <div id="delNode">
+                <div className="flex-row head">
+                  <h3>Delete node</h3>
+                  <Tooltip />
+                </div>
+                <Button onClick={() => null}>Delete</Button>
               </div>
-              <Button action={() => deleteNode()} innerText="Delete" />
-            </div>
-            <div id="addEdge">
-              <div className="flex-row head">
-                <h3>Add edge</h3>
-                <Tooltip />
+              <div id="addEdge">
+                <div className="flex-row head">
+                  <h3>Add edge</h3>
+                  <Tooltip />
+                </div>
+                <Button onClick={() => null}>Add</Button>
               </div>
-              <Button action={() => addEdge()} innerText="Add" />
+              <AdjacencyImportForm />
             </div>
-          </div>
-          <div className={isAlgTabHidden ? 'page hide' : 'page'} id="algorithms">
-            <div>
-              <Button
-                action={() => setAlgActions('kruskal')}
-                innerText={((<h3>Minimum Spanning Tree</h3>) as unknown) as Element}
-              />
-              <Button
-                action={() => setAlgActions('karger')}
-                innerText={((<h3>Cut Vertices</h3>) as unknown) as Element}
-              />
-              <Button
-                action={() => setAlgActions('bfs')}
-                innerText={((<h3>Breadth First Search</h3>) as unknown) as Element}
-              />
-              <Button
-                action={() => setAlgActions('dfs')}
-                innerText={((<h3>Depth First Search</h3>) as unknown) as Element}
-              />
-              <Button action={() => setAlgActions('')} innerText={((<h3>Clear</h3>) as unknown) as Element} />
+          ) : (
+            <div className={'page'} id="algorithms">
+              <div>
+                <Button onClick={() => null}>
+                  <h3>Minimum Spanning Tree</h3>
+                </Button>
+                <Button onClick={() => null}>
+                  <h3>Cut Vertices</h3>
+                </Button>
+                <Button onClick={() => bfs()}>
+                  <h3>Breadth First Search</h3>
+                </Button>
+                <Button onClick={() => null}>
+                  <h3>Depth First Search</h3>
+                </Button>
+                <Button onClick={() => null}>
+                  <h3>Clear</h3>
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </section>
       </div>
     </div>
