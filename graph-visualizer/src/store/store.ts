@@ -1,8 +1,12 @@
 import cytoscape from 'cytoscape'
+import cola from 'cytoscape-cola'
 import { v4 as uuidv4 } from 'uuid'
+
+import defaultStyle from './style'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createStore() {
+
   const options = {
     name: 'random',
 
@@ -21,6 +25,7 @@ export function createStore() {
         {
           selector: 'node',
           style: {},
+
         },
       ],
       maxZoom: 1,
@@ -51,11 +56,27 @@ export function createStore() {
       this.graph.elements().forEach((elem) => {
         if (elem.id() === sourceId) this.graph.remove(elem)
       })
+
     },
     destroyGraph() {
       this.graph.destroy()
     },
+    bfs() {
+      this.graph.elements().bfs({
+        roots: `#elemActions.selected`,
+        visit: (v, e, u, i, depth) => {
+          setTimeout(() => v.addClass('alg'), 1000 * depth)
+        },
+      })
+    },
   }
+
+  store.createLayout({
+    name: 'cola',
+  })
+  store.refreshLayout()
+
+  return store
 }
 
 export type TStore = ReturnType<typeof createStore>
