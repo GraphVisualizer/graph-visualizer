@@ -10,7 +10,7 @@ import { useDataStore } from './store/context'
 
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
-  const { bfs, complete, star } = store
+  const { bfs, complete, star, cycle } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
@@ -83,6 +83,7 @@ const App: React.FunctionComponent = () => {
                 </Button>
                 <Button onClick={() => complete(5)}>Complete n=5</Button>
                 <Button onClick={() => star(10)}>Star v=10</Button>
+                <Button onClick={() => cycle(10)}>Cycle v=10</Button>
               </div>
             </div>
           )}
