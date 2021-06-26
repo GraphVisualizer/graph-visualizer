@@ -10,7 +10,7 @@ import { useDataStore } from './store/context'
 
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
-  const { bfs, complete, star } = store
+  const { addNode, addEdge, deleteNode, resetGraph, bfs, complete, star } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
@@ -39,27 +39,27 @@ const App: React.FunctionComponent = () => {
           </div>
           {!isAlgTabOn ? (
             <div className={'page'} id="general">
-              <button onClick={() => null}>Clear</button>
+              <button onClick={() => resetGraph()}>Clear</button>
               <div id="addNode">
                 <div className="flex-row head">
                   <h3>Add node</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => null}>Add</Button>
+                <Button onClick={() => addNode()}>Add</Button>
               </div>
               <div id="delNode">
                 <div className="flex-row head">
                   <h3>Delete node</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => null}>Delete</Button>
+                <Button onClick={() => deleteNode()}>Delete</Button>
               </div>
               <div id="addEdge">
                 <div className="flex-row head">
                   <h3>Add edge</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => null}>Add</Button>
+                <Button onClick={() => addEdge()}>Add</Button>
               </div>
               <AdjacencyImportForm />
             </div>

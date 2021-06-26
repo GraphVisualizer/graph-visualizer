@@ -17,7 +17,7 @@ const nodeStyles: cytoscape.Stylesheet[] = [
     },
   },
   {
-    selector: '.selected',
+    selector: 'node:selected',
     style: {
       'background-color': COLORS.green,
     },
