@@ -122,6 +122,27 @@ export function createStore() {
       }
       this.refreshLayout()
     },
+    wheel(n: number) {
+      this.resetGraph()
+
+      if (n === 0) return
+
+      const center = uuidv4()
+      this.graph.add({ data: { id: center } })
+
+      let initLeg = ''
+      let prevLeg = ''
+      for (let i = 0; i < n - 1; i += 1) {
+        const newLeg = uuidv4()
+        if (i === 0) initLeg = newLeg
+        this.graph.add({ data: { id: newLeg } })
+        this.graph.add({ data: { id: uuidv4(), source: center, target: newLeg } })
+        if (prevLeg) this.graph.add({ data: { id: uuidv4(), source: prevLeg, target: newLeg } })
+        prevLeg = newLeg
+        if (i === n - 2) this.graph.add({ data: { id: uuidv4(), source: newLeg, target: initLeg } })
+      }
+      this.refreshLayout()
+    },
   }
 
   store.createLayout({
