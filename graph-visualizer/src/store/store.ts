@@ -1,6 +1,5 @@
 import cytoscape from 'cytoscape'
 import cola from 'cytoscape-cola'
-import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import layoutOptions from './layout'
@@ -47,14 +46,7 @@ export function createStore() {
 
     addNode(id: string) {
       this.graph.add({ data: { id } })
-      this.graph
-        .elements()
-        .layout({
-          name: 'random',
-          fit: true, // whether to fit to viewport
-          padding: 10, // fit padding
-        })
-        .run()
+      this.refreshLayout()
     },
     addEdge() {
       this.graph.nodes().removeListener('click')
@@ -63,6 +55,7 @@ export function createStore() {
         const target = event.target.id()
         this.graph.add({ data: { id: uuidv4(), source, target } })
         this.graph.nodes().removeListener('click')
+        this.refreshLayout()
       })
     },
     deleteNode() {
