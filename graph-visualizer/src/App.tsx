@@ -12,7 +12,7 @@ import { useDataStore } from './store/context'
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
 
-  const { addNode, addEdge, deleteNode, resetGraph, bfs, complete, star, wheel, completeBipartite, cycle} = store
+  const { addNode, addEdge, deleteNode, resetGraph, bfs, complete, star, wheel, completeBipartite, cycle } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
