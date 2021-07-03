@@ -72,6 +72,14 @@ export function createStore() {
         },
       })
     },
+    dfs() {
+      this.graph.elements().dfs({
+        roots: `node:selected`,
+        visit: (v, e, u, i, depth) => {
+          setTimeout(() => v.addClass('alg'), 1000 * depth)
+        },
+      })
+    },
     complete(n: number) {
       this.resetGraph()
 
