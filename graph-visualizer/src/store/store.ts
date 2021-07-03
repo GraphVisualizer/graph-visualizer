@@ -1,6 +1,6 @@
 import cytoscape from 'cytoscape'
 import cola from 'cytoscape-cola'
-import edgehandles from 'cytoscape-edgehandles'
+import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import defaultStyle from './style'
@@ -49,8 +49,8 @@ export function createStore() {
       this.layout.run()
     },
 
-    addNode() {
-      this.graph.add({ data: { id: uuidv4() } })
+    addNode(id: string) {
+      this.graph.add({ data: { id } })
       this.graph
         .elements()
         .layout({
@@ -60,13 +60,10 @@ export function createStore() {
         })
         .run()
     },
-    addEdge() {
-      this.graph.on('click', (event) => {
-        if (!this.graph?.$('node:selected')) return
-        const source = this.graph?.$('node:selected').id()
-        const target = event.target.id()
-        this.graph.add({ data: { id: uuidv4(), source, target } })
-      })
+    addEdge(event: React.MouseEvent<HTMLElement>) {
+      const source = this.graph?.$('node:selected').id()
+      const target = event.target.id()
+      this.graph.add({ data: { id: uuidv4(), source, target } })
     },
     deleteNode() {
       this.graph.remove('node:selected')
@@ -76,6 +73,14 @@ export function createStore() {
     },
     bfs() {
       this.graph.elements().bfs({
+        roots: `node:selected`,
+        visit: (v, e, u, i, depth) => {
+          setTimeout(() => v.addClass('alg'), 1000 * depth)
+        },
+      })
+    },
+    dfs() {
+      this.graph.elements().dfs({
         roots: `node:selected`,
         visit: (v, e, u, i, depth) => {
           setTimeout(() => v.addClass('alg'), 1000 * depth)

@@ -1,6 +1,7 @@
 import './App.css'
 
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import Button from './components/atoms/Button'
 import Graph from './components/Graph'
@@ -10,7 +11,7 @@ import { useDataStore } from './store/context'
 
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
-  const { addNode, addEdge, deleteNode, resetGraph, bfs, complete, star } = store
+  const { addNode, addEdge, deleteNode, resetGraph, bfs, dfs, complete, star } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
@@ -45,7 +46,7 @@ const App: React.FunctionComponent = () => {
                   <h3>Add node</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => addNode()}>Add</Button>
+                <Button onClick={() => addNode(uuidv4())}>Add</Button>
               </div>
               <div id="delNode">
                 <div className="flex-row head">
@@ -59,7 +60,7 @@ const App: React.FunctionComponent = () => {
                   <h3>Add edge</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => addEdge()}>Add</Button>
+                <Button onClick={(event: React.MouseEvent<HTMLElement>) => addEdge(event)}>Add</Button>
               </div>
               <AdjacencyImportForm />
             </div>
@@ -75,7 +76,7 @@ const App: React.FunctionComponent = () => {
                 <Button onClick={() => bfs()}>
                   <h3>Breadth First Search</h3>
                 </Button>
-                <Button onClick={() => null}>
+                <Button onClick={() => dfs()}>
                   <h3>Depth First Search</h3>
                 </Button>
                 <Button onClick={() => null}>
