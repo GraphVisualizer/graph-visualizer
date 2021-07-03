@@ -9,7 +9,6 @@ const App: React.FunctionComponent = () => {
 
   useEffect(() => {
     graph.mount(container.current as HTMLDivElement)
-    store.mount = container.current as HTMLDivElement
   }, [])
 
   return <div className="graph" ref={container} />
