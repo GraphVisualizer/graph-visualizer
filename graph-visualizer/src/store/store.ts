@@ -3,15 +3,17 @@ import cola from 'cytoscape-cola'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import layoutOptions from './layout'
 import defaultStyle from './style'
+
+cytoscape.use(cola)
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createStore() {
-  cytoscape.use(cola)
-
   const store = {
     graph: cytoscape({
       style: defaultStyle,
+      layout: { name: 'preset' },
       elements: [
         // list of graph elements to start with
         {
@@ -29,16 +31,8 @@ export function createStore() {
       ],
       maxZoom: 1,
     }),
-
-    mount: {} as HTMLDivElement,
-
     resetGraph() {
-      this.graph.destroy()
-      this.graph = cytoscape({ style: defaultStyle, maxZoom: 1 })
-      this.createLayout({
-        name: 'cola',
-      })
-      this.graph.mount(this.mount)
+      this.graph.elements().remove()
     },
 
     layout: {} as cytoscape.Layouts,
@@ -46,6 +40,8 @@ export function createStore() {
       this.layout = this.graph.layout(options)
     },
     refreshLayout() {
+      this.layout.stop()
+      this.layout = this.graph.elements().makeLayout(layoutOptions.cola)
       this.layout.run()
     },
 
@@ -94,6 +90,7 @@ export function createStore() {
           this.graph.add({ data: { id: uuidv4(), source: connector.id(), target: newNode } })
         })
       }
+
       this.refreshLayout()
     },
     star(v: number) {
@@ -111,9 +108,8 @@ export function createStore() {
     },
   }
 
-  store.createLayout({
-    name: 'cola',
-  })
+  store.createLayout(layoutOptions.cola)
+
   store.refreshLayout()
 
   return store
