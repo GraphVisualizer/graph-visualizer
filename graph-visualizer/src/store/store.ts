@@ -60,8 +60,13 @@ export function createStore() {
         })
         .run()
     },
-    addEdge(source?: string, target?: string) {
-      this.graph.add({ data: { id: uuidv4(), source, target } })
+    addEdge() {
+      this.graph.nodes().on('click', (event) => {
+        const source = this?.graph.$('node:selected').id()
+        const target = event.target.id()
+        this.graph.add({ data: { id: uuidv4(), source, target } })
+        this.graph.nodes().removeListener('click')
+      })
     },
     deleteNode() {
       this.graph.remove('node:selected')
