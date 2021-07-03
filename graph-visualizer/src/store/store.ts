@@ -61,6 +61,7 @@ export function createStore() {
         .run()
     },
     addEdge() {
+      this.graph.nodes().removeListener('click')
       this.graph.nodes().on('click', (event) => {
         const source = this?.graph.$('node:selected').id()
         const target = event.target.id()
