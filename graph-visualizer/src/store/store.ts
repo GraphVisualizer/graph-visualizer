@@ -106,6 +106,26 @@ export function createStore() {
       }
       this.refreshLayout()
     },
+
+    completeBipartite(m: number, n: number) {
+      this.resetGraph()
+
+      const set = []
+      for (let i = 0; i < m; i += 1) {
+        const newNode = uuidv4()
+        set.push(newNode)
+        this.graph.add({ data: { id: newNode } })
+      }
+
+      for (let i = 0; i < n; i += 1) {
+        const newNode = uuidv4()
+        this.graph.add({ data: { id: newNode } })
+
+        set.forEach((node) => {
+          this.graph.add({ data: { id: uuidv4(), source: newNode, target: node } })
+        })
+      }
+
     wheel(n: number) {
       this.resetGraph()
 
@@ -125,6 +145,7 @@ export function createStore() {
         prevLeg = newLeg
         if (i === n - 2) this.graph.add({ data: { id: uuidv4(), source: newLeg, target: initLeg } })
       }
+
       this.refreshLayout()
     },
   }
