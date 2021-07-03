@@ -60,9 +60,7 @@ export function createStore() {
         })
         .run()
     },
-    addEdge(event: React.MouseEvent<HTMLElement>) {
-      const source = this.graph?.$('node:selected').id()
-      const target = event.target.id()
+    addEdge(source?: string, target?: string) {
       this.graph.add({ data: { id: uuidv4(), source, target } })
     },
     deleteNode() {
@@ -73,14 +71,6 @@ export function createStore() {
     },
     bfs() {
       this.graph.elements().bfs({
-        roots: `node:selected`,
-        visit: (v, e, u, i, depth) => {
-          setTimeout(() => v.addClass('alg'), 1000 * depth)
-        },
-      })
-    },
-    dfs() {
-      this.graph.elements().dfs({
         roots: `node:selected`,
         visit: (v, e, u, i, depth) => {
           setTimeout(() => v.addClass('alg'), 1000 * depth)

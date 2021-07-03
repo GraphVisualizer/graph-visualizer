@@ -60,7 +60,7 @@ const App: React.FunctionComponent = () => {
                   <h3>Add edge</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={(event: React.MouseEvent<HTMLElement>) => addEdge(event)}>Add</Button>
+                <Button onClick={() => addEdge()}>Add</Button>
               </div>
               <AdjacencyImportForm />
             </div>
