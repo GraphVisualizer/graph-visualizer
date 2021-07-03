@@ -1,6 +1,7 @@
 import './App.css'
 
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import Button from './components/atoms/Button'
 import Graph from './components/Graph'
@@ -10,7 +11,8 @@ import { useDataStore } from './store/context'
 
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
-  const { bfs, complete, star, completeBipartite } = store
+
+  const { addNode, addEdge, deleteNode, resetGraph, bfs, complete, star, wheel, completeBipartite} = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
@@ -39,27 +41,27 @@ const App: React.FunctionComponent = () => {
           </div>
           {!isAlgTabOn ? (
             <div className={'page'} id="general">
-              <button onClick={() => null}>Clear</button>
+              <button onClick={() => resetGraph()}>Clear</button>
               <div id="addNode">
                 <div className="flex-row head">
                   <h3>Add node</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => null}>Add</Button>
+                <Button onClick={() => addNode(uuidv4())}>Add</Button>
               </div>
               <div id="delNode">
                 <div className="flex-row head">
                   <h3>Delete node</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => null}>Delete</Button>
+                <Button onClick={() => deleteNode()}>Delete</Button>
               </div>
               <div id="addEdge">
                 <div className="flex-row head">
                   <h3>Add edge</h3>
                   <Tooltip />
                 </div>
-                <Button onClick={() => null}>Add</Button>
+                <Button onClick={() => addEdge()}>Add</Button>
               </div>
               <AdjacencyImportForm />
             </div>
@@ -84,6 +86,7 @@ const App: React.FunctionComponent = () => {
                 <Button onClick={() => complete(5)}>Complete n=5</Button>
                 <Button onClick={() => star(10)}>Star v=10</Button>
                 <Button onClick={() => completeBipartite(5, 3)}>Bipartite m = 5 n = 3</Button>
+                <Button onClick={() => wheel(10)}>Wheel n=10</Button>
               </div>
             </div>
           )}

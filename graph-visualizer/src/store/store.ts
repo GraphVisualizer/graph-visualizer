@@ -1,18 +1,19 @@
 import cytoscape from 'cytoscape'
 import cola from 'cytoscape-cola'
+import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import layoutOptions from './layout'
 import defaultStyle from './style'
+
+cytoscape.use(cola)
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createStore() {
-  cytoscape.use(cola)
-
-  let edgeFlag = false
-
   const store = {
     graph: cytoscape({
       style: defaultStyle,
+      layout: { name: 'preset' },
       elements: [
         // list of graph elements to start with
         {
@@ -30,16 +31,8 @@ export function createStore() {
       ],
       maxZoom: 1,
     }),
-
-    mount: {} as HTMLDivElement,
-
     resetGraph() {
-      this.graph.destroy()
-      this.graph = cytoscape({ style: defaultStyle, maxZoom: 1 })
-      this.createLayout({
-        name: 'cola',
-      })
-      this.graph.mount(this.mount)
+      this.graph.elements().remove()
     },
 
     layout: {} as cytoscape.Layouts,
@@ -47,44 +40,33 @@ export function createStore() {
       this.layout = this.graph.layout(options)
     },
     refreshLayout() {
+      this.layout.stop()
+      this.layout = this.graph.elements().makeLayout(layoutOptions.cola)
       this.layout.run()
     },
-    addNode() {
-      this.graph.add({ data: { id: uuidv4() } }).on('tap', (event) => {
-        if (edgeFlag) {
-          const sourceId = this.graph?.$('.selected').id()
-          this.graph?.$('.selected').removeClass('selected')
-          this.graph.add({ data: { id: uuidv4(), source: sourceId, target: event.target.id() } })
-          edgeFlag = !edgeFlag
-        } else {
-          this.graph?.$('.selected').removeClass('selected')
-          this.graph.elements().forEach((elem) => {
-            if (elem.id() === event.target.id()) elem.addClass('selected')
-          })
-        }
-      })
+
+    addNode(id: string) {
+      this.graph.add({ data: { id } })
       this.graph
         .elements()
         .layout({
           name: 'random',
-
           fit: true, // whether to fit to viewport
-          padding: 20, // fit padding
-          boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-          ready: undefined, // callback on layoutready
-          stop: undefined, // callback on layoutstop
+          padding: 10, // fit padding
         })
         .run()
     },
     addEdge() {
-      edgeFlag = !edgeFlag
+      this.graph.nodes().removeListener('click')
+      this.graph.nodes().on('click', (event) => {
+        const source = this?.graph.$('node:selected').id()
+        const target = event.target.id()
+        this.graph.add({ data: { id: uuidv4(), source, target } })
+        this.graph.nodes().removeListener('click')
+      })
     },
     deleteNode() {
-      const sourceId = this.graph?.$('.selected').id()
-      this.graph?.$('.selected').removeClass('selected')
-      this.graph.elements().forEach((elem) => {
-        if (elem.id() === sourceId) this.graph.remove(elem)
-      })
+      this.graph.remove('node:selected')
     },
     deleteEdge() {
       this.graph.remove('edge:selected')
@@ -99,6 +81,7 @@ export function createStore() {
     },
     complete(n: number) {
       this.resetGraph()
+
       for (let i = 0; i < n; i += 1) {
         const newNode = uuidv4()
         const connectors = this.graph.nodes()
@@ -107,6 +90,7 @@ export function createStore() {
           this.graph.add({ data: { id: uuidv4(), source: connector.id(), target: newNode } })
         })
       }
+
       this.refreshLayout()
     },
     star(v: number) {
@@ -122,6 +106,7 @@ export function createStore() {
       }
       this.refreshLayout()
     },
+
     completeBipartite(m: number, n: number) {
       this.resetGraph()
 
@@ -141,13 +126,32 @@ export function createStore() {
         })
       }
 
+    wheel(n: number) {
+      this.resetGraph()
+
+      if (n === 0) return
+
+      const center = uuidv4()
+      this.graph.add({ data: { id: center } })
+
+      let initLeg = ''
+      let prevLeg = ''
+      for (let i = 0; i < n - 1; i += 1) {
+        const newLeg = uuidv4()
+        if (i === 0) initLeg = newLeg
+        this.graph.add({ data: { id: newLeg } })
+        this.graph.add({ data: { id: uuidv4(), source: center, target: newLeg } })
+        if (prevLeg) this.graph.add({ data: { id: uuidv4(), source: prevLeg, target: newLeg } })
+        prevLeg = newLeg
+        if (i === n - 2) this.graph.add({ data: { id: uuidv4(), source: newLeg, target: initLeg } })
+      }
+
       this.refreshLayout()
     },
   }
 
-  store.createLayout({
-    name: 'cola',
-  })
+  store.createLayout(layoutOptions.cola)
+
   store.refreshLayout()
 
   return store
