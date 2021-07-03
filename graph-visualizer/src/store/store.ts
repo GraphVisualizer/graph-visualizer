@@ -114,6 +114,7 @@ export function createStore() {
         back = newLeg
       }
       this.graph.add({ data: { id: uuidv4(), source: back, target: start } })
+      this.refreshLayout()
     },
 
     completeBipartite(m: number, n: number) {
@@ -134,6 +135,7 @@ export function createStore() {
           this.graph.add({ data: { id: uuidv4(), source: newNode, target: node } })
         })
       }
+      this.refreshLayout()
     },
 
     wheel(n: number) {
