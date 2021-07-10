@@ -34,6 +34,10 @@ export function createStore() {
       this.graph.elements().remove()
     },
 
+    clearGraphAlgs() {
+      this.graph.nodes().removeClass('alg')
+    },
+
     layout: {} as cytoscape.Layouts,
     createLayout(options: cytoscape.LayoutOptions) {
       this.layout = this.graph.layout(options)
