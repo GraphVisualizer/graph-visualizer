@@ -17,6 +17,7 @@ const App: React.FunctionComponent = () => {
     addEdge,
     deleteNode,
     resetGraph,
+    cutVertices,
     clearGraphAlgs,
     bfs,
     dfs,
@@ -87,7 +88,7 @@ const App: React.FunctionComponent = () => {
                 <Button onClick={() => null}>
                   <h3>Minimum Spanning Tree</h3>
                 </Button>
-                <Button onClick={() => null}>
+                <Button onClick={() => cutVertices()}>
                   <h3>Cut Vertices</h3>
                 </Button>
                 <Button onClick={() => bfs()}>
