@@ -82,10 +82,11 @@ section.interface {
 
 .tabs {
   background: none;
+  height: 8vh;
   width: 18vw;
   padding-bottom: 2vh;
-  margin-top: -3vh;
-  margin-bottom: 4vh;
+  margin-top: -1vh;
+  margin-bottom: 2vh;
   border-bottom: 1px solid black;
 }
 
@@ -97,6 +98,7 @@ section.interface div.head {
   height: 3vh;
   width: 10vw;
 }
+
 #addNode {
   margin-top: 3vh;
 }
