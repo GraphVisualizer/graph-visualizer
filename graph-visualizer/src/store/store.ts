@@ -66,9 +66,7 @@ export function createStore() {
     },
     cutVertices() {
       const ht = this.graph.elements().htbc()
-      const cutNodes = ht.cut
-      console.log(cutNodes)
-      cutNodes.addClass('alg')
+      ht.cut.addClass('alg')
     },
     bfs() {
       this.graph.elements().bfs({
