@@ -34,6 +34,10 @@ export function createStore() {
       this.graph.elements().remove()
     },
 
+    clearGraphAlgs() {
+      this.graph.nodes().removeClass('alg')
+    },
+
     layout: {} as cytoscape.Layouts,
     createLayout(options: cytoscape.LayoutOptions) {
       this.layout = this.graph.layout(options)
@@ -63,6 +67,10 @@ export function createStore() {
     },
     deleteEdge() {
       this.graph.remove('edge:selected')
+    },
+    cutVertices() {
+      const ht = this.graph.elements().htbc()
+      ht.cut.addClass('alg')
     },
     bfs() {
       this.graph.elements().bfs({
