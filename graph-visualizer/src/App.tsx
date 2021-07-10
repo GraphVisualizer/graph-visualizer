@@ -12,7 +12,20 @@ import { useDataStore } from './store/context'
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
 
-  const { addNode, addEdge, deleteNode, resetGraph, bfs, dfs, complete, star, wheel, completeBipartite, cycle } = store
+  const {
+    addNode,
+    addEdge,
+    deleteNode,
+    resetGraph,
+    cutVertices,
+    bfs,
+    dfs,
+    complete,
+    star,
+    wheel,
+    completeBipartite,
+    cycle,
+  } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
@@ -71,7 +84,7 @@ const App: React.FunctionComponent = () => {
                 <Button onClick={() => null}>
                   <h3>Minimum Spanning Tree</h3>
                 </Button>
-                <Button onClick={() => null}>
+                <Button onClick={() => cutVertices()}>
                   <h3>Cut Vertices</h3>
                 </Button>
                 <Button onClick={() => bfs()}>

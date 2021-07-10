@@ -64,6 +64,12 @@ export function createStore() {
     deleteEdge() {
       this.graph.remove('edge:selected')
     },
+    cutVertices() {
+      const ht = this.graph.elements().htbc()
+      const cutNodes = ht.cut
+      console.log(cutNodes)
+      cutNodes.addClass('alg')
+    },
     bfs() {
       this.graph.elements().bfs({
         roots: `node:selected`,
