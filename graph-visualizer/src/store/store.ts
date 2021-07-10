@@ -88,6 +88,23 @@ export function createStore() {
         },
       })
     },
+    dijkstra() {
+      const source = this.graph?.$(`node:selected`).id()
+      const dijkstra = this.graph.elements().dijkstra({
+        root: `#${source}`,
+      })
+
+      this.graph.nodes().removeListener('click')
+      this.graph.nodes().on('click', (event) => {
+        const destination = event.target.id()
+        const pathFromSource = dijkstra.pathTo(this.graph?.$(`#${destination}`))
+        const nodeCollection = pathFromSource.map((ele) => this.graph?.$(`#${ele.id()}`))
+        nodeCollection.forEach((node, i) => setTimeout(() => node.addClass('alg'), 500 * (i + 1)))
+
+        this.graph.nodes().removeListener('click')
+      })
+    },
+
     complete(n: number) {
       this.resetGraph()
 
@@ -102,6 +119,7 @@ export function createStore() {
 
       this.refreshLayout()
     },
+
     star(v: number) {
       this.resetGraph()
 
