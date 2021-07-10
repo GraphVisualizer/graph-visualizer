@@ -12,7 +12,20 @@ import { useDataStore } from './store/context'
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
 
-  const { addNode, addEdge, deleteNode, resetGraph, bfs, dfs, complete, star, wheel, completeBipartite, cycle } = store
+  const {
+    addNode,
+    addEdge,
+    deleteNode,
+    resetGraph,
+    clearGraphAlgs,
+    bfs,
+    dfs,
+    complete,
+    star,
+    wheel,
+    completeBipartite,
+    cycle,
+  } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
 
@@ -68,6 +81,9 @@ const App: React.FunctionComponent = () => {
           ) : (
             <div className={'page'} id="algorithms">
               <div>
+                <Button onClick={() => clearGraphAlgs()}>
+                  <h3>Clear</h3>
+                </Button>
                 <Button onClick={() => null}>
                   <h3>Minimum Spanning Tree</h3>
                 </Button>
@@ -79,9 +95,6 @@ const App: React.FunctionComponent = () => {
                 </Button>
                 <Button onClick={() => dfs()}>
                   <h3>Depth First Search</h3>
-                </Button>
-                <Button onClick={() => null}>
-                  <h3>Clear</h3>
                 </Button>
                 <Button onClick={() => complete(5)}>
                   <h3>Complete n=5</h3>
