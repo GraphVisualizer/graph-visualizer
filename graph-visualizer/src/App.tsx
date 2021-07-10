@@ -96,11 +96,21 @@ const App: React.FunctionComponent = () => {
                 <Button onClick={() => dfs()}>
                   <h3>Depth First Search</h3>
                 </Button>
-                <Button onClick={() => complete(5)}>Complete n=5</Button>
-                <Button onClick={() => star(10)}>Star v=10</Button>
-                <Button onClick={() => cycle(10)}>Cycle v=10</Button>
-                <Button onClick={() => completeBipartite(5, 3)}>Bipartite m = 5 n = 3</Button>
-                <Button onClick={() => wheel(10)}>Wheel n=10</Button>
+                <Button onClick={() => complete(5)}>
+                  <h3>Complete n=5</h3>
+                </Button>
+                <Button onClick={() => star(10)}>
+                  <h3>Star v=1</h3>
+                </Button>
+                <Button onClick={() => cycle(10)}>
+                  <h3>Cycle v=10</h3>
+                </Button>
+                <Button onClick={() => completeBipartite(5, 3)}>
+                  <h3>Bipartite m = 5 n = 3</h3>
+                </Button>
+                <Button onClick={() => wheel(10)}>
+                  <h3>Wheel n=10</h3>
+                </Button>
               </div>
             </div>
           )}
