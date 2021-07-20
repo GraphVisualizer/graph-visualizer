@@ -172,6 +172,54 @@ export function createStore() {
 
       this.refreshLayout()
     },
+    kruskal() {
+      const nodes = this.graph.nodes()
+      const edges = this.graph.edges()
+      const numNodes = nodes.length
+      const forest: cytoscape.NodeSingular[] = new Array(numNodes)
+      const A: cytoscape.CollectionReturnValue = this.graph.collection() // assumes byGroup() creates new collections that can be safely mutated
+
+      A.merge(nodes)
+
+      const findSetIndex = (ele: cytoscape.NodeSingular) => {
+        for (let i = 0; i < forest.length; i += 1) {
+          const eles = forest[i]
+
+          if (eles.has(ele)) {
+            return i
+          }
+        }
+
+        return -1
+      }
+
+      // start with one forest per node
+      for (let i = 0; i < numNodes; i += 1) {
+        forest[i] = nodes[i]
+      }
+
+      for (let i = 0; i < edges.length; i += 1) {
+        const edge = edges[i]
+        const u = edge.source()
+        const v = edge.target()
+        const setUIndex = findSetIndex(u)
+        const setVIndex = findSetIndex(v)
+        const setU = forest[setUIndex]
+        const setV = forest[setVIndex]
+
+        if (setUIndex !== setVIndex) {
+          A.merge(edge)
+
+          // combine forests for u and v
+          setU.merge(setV)
+          forest.splice(setVIndex, 1)
+        }
+      }
+
+      A.addClass('alg')
+
+      return A
+    },
   }
 
   store.createLayout(layoutOptions.cola)
