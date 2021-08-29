@@ -194,6 +194,23 @@ export function createStore() {
 
       this.refreshLayout()
     },
+    prim() {
+      const A: cytoscape.CollectionReturnValue = this.graph.collection()
+
+      this.graph.elements().breadthFirstSearch({
+        root: this.graph.nodes()[0],
+        visit: (v, e) => {
+          if (!A.contains(v)) {
+            A.merge(v)
+            A.merge(e)
+          }
+        },
+      })
+
+      A.addClass('alg')
+
+      return A
+    },
   }
 
   store.createLayout(layoutOptions.cola)

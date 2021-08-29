@@ -27,6 +27,7 @@ const App: React.FunctionComponent = () => {
     wheel,
     completeBipartite,
     cycle,
+    prim,
   } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
@@ -88,6 +89,9 @@ const App: React.FunctionComponent = () => {
                 </Button>
                 <Button onClick={() => null}>
                   <h3>Minimum Spanning Tree</h3>
+                </Button>
+                <Button onClick={() => prim()}>
+                  <h3>Prim</h3>
                 </Button>
                 <Button onClick={() => cutVertices()}>
                   <h3>Cut Vertices</h3>
