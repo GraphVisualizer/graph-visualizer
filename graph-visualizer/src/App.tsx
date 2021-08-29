@@ -89,7 +89,7 @@ const App: React.FunctionComponent = () => {
                   <h3>Clear</h3>
                 </Button>
                 <Button onClick={() => kruskal()}>
-                  <h3>Minimum Spanning Tree</h3>
+                  <h3>Kruskal</h3>
                 </Button>
                 <Button onClick={() => prim()}>
                   <h3>Prim</h3>
