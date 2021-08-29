@@ -27,6 +27,7 @@ const App: React.FunctionComponent = () => {
     wheel,
     completeBipartite,
     cycle,
+    kruskal,
     prim,
   } = store
 
@@ -87,7 +88,7 @@ const App: React.FunctionComponent = () => {
                 <Button onClick={() => clearGraphAlgs()}>
                   <h3>Clear</h3>
                 </Button>
-                <Button onClick={() => null}>
+                <Button onClick={() => kruskal()}>
                   <h3>Minimum Spanning Tree</h3>
                 </Button>
                 <Button onClick={() => prim()}>
