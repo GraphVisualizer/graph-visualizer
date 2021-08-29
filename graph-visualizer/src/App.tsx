@@ -17,6 +17,8 @@ const App: React.FunctionComponent = () => {
     addEdge,
     deleteNode,
     resetGraph,
+    dijkstra,
+    cutVertices,
     clearGraphAlgs,
     bfs,
     dfs,
@@ -26,6 +28,7 @@ const App: React.FunctionComponent = () => {
     completeBipartite,
     cycle,
     kruskal,
+    prim,
   } = store
 
   const [isAlgTabOn, setIsAlgTabOn] = useState(false)
@@ -88,7 +91,10 @@ const App: React.FunctionComponent = () => {
                 <Button onClick={() => kruskal()}>
                   <h3>Minimum Spanning Tree</h3>
                 </Button>
-                <Button onClick={() => null}>
+                <Button onClick={() => prim()}>
+                  <h3>Prim</h3>
+                </Button>
+                <Button onClick={() => cutVertices()}>
                   <h3>Cut Vertices</h3>
                 </Button>
                 <Button onClick={() => bfs()}>
@@ -102,6 +108,24 @@ const App: React.FunctionComponent = () => {
                 </Button>
                 <Button onClick={() => star(10)}>
                   <h3>Star v=1</h3>
+                </Button>
+                <Button onClick={() => cycle(10)}>
+                  <h3>Cycle v=10</h3>
+                </Button>
+                <Button onClick={() => completeBipartite(5, 3)}>
+                  <h3>Bipartite m = 5 n = 3</h3>
+                </Button>
+                <Button onClick={() => wheel(10)}>
+                  <h3>Wheel n=10</h3>
+                </Button>
+                <Button onClick={() => dijkstra()}>
+                  <h3>Dijkstra</h3>
+                </Button>
+                <Button onClick={() => complete(5)}>
+                  <h3>Complete n=5</h3>
+                </Button>
+                <Button onClick={() => star(10)}>
+                  <h3>Star v=10</h3>
                 </Button>
                 <Button onClick={() => cycle(10)}>
                   <h3>Cycle v=10</h3>

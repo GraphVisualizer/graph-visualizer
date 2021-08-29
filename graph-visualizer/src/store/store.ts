@@ -68,6 +68,10 @@ export function createStore() {
     deleteEdge() {
       this.graph.remove('edge:selected')
     },
+    cutVertices() {
+      const ht = this.graph.elements().htbc()
+      ht.cut.addClass('alg')
+    },
     bfs() {
       this.graph.elements().bfs({
         roots: `node:selected`,
@@ -84,6 +88,23 @@ export function createStore() {
         },
       })
     },
+    dijkstra() {
+      const source = this.graph?.$(`node:selected`).id()
+      const dijkstra = this.graph.elements().dijkstra({
+        root: `#${source}`,
+      })
+
+      this.graph.nodes().removeListener('click')
+      this.graph.nodes().on('click', (event) => {
+        const destination = event.target.id()
+        const pathFromSource = dijkstra.pathTo(this.graph?.$(`#${destination}`))
+        const nodeCollection = pathFromSource.map((ele) => this.graph?.$(`#${ele.id()}`))
+        nodeCollection.forEach((node, i) => setTimeout(() => node.addClass('alg'), 500 * (i + 1)))
+
+        this.graph.nodes().removeListener('click')
+      })
+    },
+
     complete(n: number) {
       this.resetGraph()
 
@@ -98,6 +119,7 @@ export function createStore() {
 
       this.refreshLayout()
     },
+
     star(v: number) {
       this.resetGraph()
 
@@ -215,6 +237,19 @@ export function createStore() {
           forest.splice(setVIndex, 1)
         }
       }
+    },
+    prim() {
+      const A: cytoscape.CollectionReturnValue = this.graph.collection()
+
+      this.graph.elements().breadthFirstSearch({
+        root: this.graph.nodes()[0],
+        visit: (v, e) => {
+          if (!A.contains(v)) {
+            A.merge(v)
+            A.merge(e)
+          }
+        },
+      })
 
       A.addClass('alg')
 
