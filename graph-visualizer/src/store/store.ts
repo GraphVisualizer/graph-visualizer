@@ -224,26 +224,29 @@ export function createStore() {
       }
 
       for (let i = 0; i < edges.length; i += 1) {
-        setTimeout(() => {
-          const edge = edges[i]
-          const u = edge.source()
-          const v = edge.target()
-          const setUIndex = findSetIndex(u)
-          const setVIndex = findSetIndex(v)
-          const setU = forest[setUIndex]
-          const setV = forest[setVIndex]
+        const edge = edges[i]
+        const u = edge.source()
+        const v = edge.target()
+        const setUIndex = findSetIndex(u)
+        const setVIndex = findSetIndex(v)
+        const setU = forest[setUIndex]
+        const setV = forest[setVIndex]
 
-          if (setUIndex !== setVIndex) {
-            A.merge(edge)
+        if (setUIndex !== setVIndex) {
+          A.merge(edge)
 
-            A.addClass('alg')
+          // combine forests for u and v
+          setU.merge(setV)
+          forest.splice(setVIndex, 1)
+        }
 
-            // combine forests for u and v
-            setU.merge(setV)
-            forest.splice(setVIndex, 1)
-          }
-        }, 1000 * i)
         // doesn't work correctly so far since timeout needs to happen in if section
+      }
+
+      for (let i = 0; i < A.edges().length; i += 1) {
+        setTimeout(() => {
+          A.edges()[i].addClass('alg')
+        }, 1000 * i)
       }
 
       return A
