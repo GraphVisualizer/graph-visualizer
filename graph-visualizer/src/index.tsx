@@ -1,17 +1,26 @@
+import './App.css'
 import './index.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import App from './App'
+import AppModule from './modules/AppModule'
+import Contact from './modules/Contact'
+import Home from './modules/Home'
+import Nav from './modules/Nav'
 import reportWebVitals from './reportWebVitals'
-import { DataStoreProvider } from './store/context'
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataStoreProvider>
-      <App />
-    </DataStoreProvider>
+    <Router>
+      <Nav />
+      <Switch>
+        <Route path="/app" component={AppModule} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 )

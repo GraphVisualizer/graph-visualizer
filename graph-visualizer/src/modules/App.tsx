@@ -1,13 +1,11 @@
-import './App.css'
-
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import Button from './components/atoms/Button'
-import Graph from './components/Graph'
-import AdjacencyImportForm from './components/organisms/AdjacencyImportForm'
-import Tooltip from './components/Tooltip'
-import { useDataStore } from './store/context'
+import Button from '../components/atoms/Button'
+import Graph from '../components/Graph'
+import AdjacencyImportForm from '../components/organisms/AdjacencyImportForm'
+import Tooltip from '../components/Tooltip'
+import { useDataStore } from '../store/context'
 
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
@@ -35,14 +33,6 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div className="App">
-      <nav className="flex-row">
-        <h1>Graph Visualizer</h1>
-        <ul className="flex-row">
-          <li>Tutorials</li>
-          <li>Features</li>
-          <li>Learn More</li>
-        </ul>
-      </nav>
       <div className="main flex-row">
         <section className="visual">
           <Graph />
