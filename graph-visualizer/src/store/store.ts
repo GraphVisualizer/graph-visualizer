@@ -56,8 +56,12 @@ export function createStore() {
       this.graph.nodes().removeListener('click')
       this.graph.nodes().on('click', (event) => {
         const source = this?.graph.$('node:selected').id()
-        const target = event.target.id()
-        this.graph.add({ data: { id: uuidv4(), source, target } })
+
+        if (source) {
+          const target = event.target.id()
+          this.graph.add({ data: { id: uuidv4(), source, target } })
+        }
+
         this.graph.nodes().removeListener('click')
         this.refreshLayout()
       })
