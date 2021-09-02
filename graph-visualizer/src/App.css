@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 * {
-  margin: 0;
+  margin-top: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
   font-family: 'Raleway', serif;
   color: black;
+}
+
+:root {
+  --pink: #ffa6a0;
 }
 
 body {
@@ -36,16 +40,23 @@ nav {
   padding: 1.75rem 0 0.25rem 1rem;
 }
 
+nav h1:hover {
+  color: var(--pink);
+  cursor: pointer;
+}
+
 nav ul {
   justify-content: space-between;
   padding-top: 0.25rem;
-  padding-left: 2rem;
+}
+
+nav li {
+  font-size: 1.2rem;
 }
 
 nav li:hover {
-  transform: scale(1.1);
   cursor: pointer;
-  font-size: 1.0rem;
+  font-size: 1.3rem;
 }
 
 section.visual {
@@ -95,7 +106,8 @@ section.interface {
 }
 
 section.interface div.head {
-  height: 3vh;
+  height: 5vh;
+  margin-bottom: -3vh;
   width: 10vw;
 }
 
@@ -129,5 +141,7 @@ section.interface svg {
 
 #algorithms button {
   width: 15vw;
-  height: 5vh;
+  height: 6vh;
+  padding-top: 1vh;
+  font-size: 1.0rem;
 }
