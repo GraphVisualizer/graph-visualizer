@@ -1,22 +1,26 @@
 .container {
-  background-color: aquamarine;
-  padding: 10px;
-  margin: 10px;
+  background-color: rgba(135, 173, 182, 0.6);
+  filter: brightness(1.4);
+  width: 100%;
 }
 
 .flexContainer {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 .title {
   width: 100%;
+  margin: 20px 0 20px 0;
+  font-size: 30px;
   text-align: center;
   color: floralwhite;
 }
 
 .contactContainer {
-  width: 50%;
+  width: 30%;
+  margin: 10px;
   padding: 10px;
 }
 
@@ -25,6 +29,15 @@
 }
 
 .imageContainer {
-  width: 500px;
-  height: 500px;
+  margin: auto;
+  width: 300px;
+  height: 300px;
+}
+
+img {
+  display: block;
+  margin: auto;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
 }

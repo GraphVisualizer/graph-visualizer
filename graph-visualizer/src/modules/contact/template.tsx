@@ -4,7 +4,6 @@ import React from 'react'
 
 interface ContactTemplateProps {
   personArray: {
-    name: string
     img: string
     bio: string
   }[]
@@ -18,7 +17,6 @@ const App: React.FunctionComponent<ContactTemplateProps> = ({ personArray }: Con
         {personArray.map((person, index) => {
           return (
             <div key={index} className="contactContainer">
-              <div className="name">{person.name}</div>
               <div className="imageContainer">
                 <img src={person.img} />
               </div>
