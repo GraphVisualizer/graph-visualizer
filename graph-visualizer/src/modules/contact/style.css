@@ -1,0 +1,42 @@
+.container {
+  background-color: rgba(135, 173, 182, 0.6);
+  filter: brightness(1.4);
+  width: 100%;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.title {
+  width: 100%;
+  margin: 4vh 0 4vh 0;
+  font-size: 30px;
+  text-align: center;
+  color: floralwhite;
+}
+
+.contactContainer {
+  width: 30%;
+  margin: 4vh 5vw 4vh 5vw;
+}
+
+.name {
+  text-align: center;
+}
+
+.imageContainer {
+  margin: auto;
+  width: 30vw;
+  height: 45vh;
+}
+
+img {
+  display: block;
+  margin: auto;
+  height: 40vh;
+  width: 40vh;
+  border-radius: 50%;
+}
