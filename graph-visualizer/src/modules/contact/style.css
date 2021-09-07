@@ -1,0 +1,30 @@
+.container {
+  background-color: aquamarine;
+  padding: 10px;
+  margin: 10px;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  color: floralwhite;
+}
+
+.contactContainer {
+  width: 50%;
+  padding: 10px;
+}
+
+.name {
+  text-align: center;
+}
+
+.imageContainer {
+  width: 500px;
+  height: 500px;
+}
