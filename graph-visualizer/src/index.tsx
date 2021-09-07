@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppModule from './modules/AppModule'
 import Contact from './modules/Contact'
 import Footer from './modules/Footer'
-import Home from './modules/Home/Home'
+import Home from './modules/Home'
 import Nav from './modules/Nav'
 import reportWebVitals from './reportWebVitals'
 

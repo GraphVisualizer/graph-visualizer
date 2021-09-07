@@ -1,10 +1,11 @@
-import './Home.css'
+import './style.css'
 
 import React from 'react'
 
 import Graph from '../../components/GraphDemo'
 import { DataStoreProvider } from '../../store/contextDemo'
 import TutorialSection from './TutorialSection'
+// eslint-disable-next-line import/no-unresolved
 import TutorialSectionAlt from './TutorialSectionAlt'
 
 const Home: React.FunctionComponent = () => {

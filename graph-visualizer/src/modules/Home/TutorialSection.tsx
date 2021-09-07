@@ -1,4 +1,4 @@
-import './TutorialSection.css'
+import './style.css'
 
 import React from 'react'
 
