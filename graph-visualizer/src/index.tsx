@@ -16,8 +16,8 @@ ReactDOM.render(
     <Router>
       <Nav />
       <Switch>
-        <Route path="/app" component={AppModule} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/App" component={AppModule} />
+        <Route path="/Contact" component={Contact} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>

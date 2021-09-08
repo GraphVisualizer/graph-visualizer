@@ -6,6 +6,7 @@ import React, { useEffect, useRef } from 'react'
 
 import layoutOptions from '../../store/layout'
 import defaultStyle from '../../store/style'
+import TutorialTemplate from './template'
 
 const Home: React.FunctionComponent = () => {
   return (
@@ -25,7 +26,9 @@ const Home: React.FunctionComponent = () => {
         </div>
         <div className="action flex-row">
           <p>Check out our app or read our tutorial below!</p>
-          <button>Check it out!</button>
+          <button>
+            <a href="../App">Check it out!</a>
+          </button>
         </div>
       </section>
       <div className="flex-column intro">
@@ -38,9 +41,6 @@ const Home: React.FunctionComponent = () => {
       </div>
       <section className="tutorial">
         <TutorialSection />
-        <TutorialSectionAlt />
-        <TutorialSection />
-        <TutorialSectionAlt />
       </section>
     </div>
   )
@@ -48,33 +48,38 @@ const Home: React.FunctionComponent = () => {
 
 const TutorialSection: React.FunctionComponent = () => {
   return (
-    <div className="flex-row top">
-      <section className="flex-column">
-        <h3>Subheading</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </section>
-      <div className="fig"></div>
-    </div>
-  )
-}
-
-const TutorialSectionAlt: React.FunctionComponent = () => {
-  return (
-    <div className="flex-row top alt">
-      <div className="fig"></div>
-      <section className="flex-column">
-        <h3>Subheading</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </section>
-    </div>
+    <TutorialTemplate
+      tutorialElementsArray={[
+        {
+          subheading: 'Subheading',
+          description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+          img: '',
+          alt: false,
+        },
+        {
+          subheading: 'Subheading',
+          description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+          img: '',
+          alt: true,
+        },
+        {
+          subheading: 'Subheading',
+          description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+          img: '',
+          alt: false,
+        },
+        {
+          subheading: 'Subheading',
+          description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+          img: '',
+          alt: true,
+        },
+      ]}
+    />
   )
 }
 

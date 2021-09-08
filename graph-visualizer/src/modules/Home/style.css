@@ -78,6 +78,10 @@ section.start {
     cursor: pointer;
 }
 
+.action button a:hover {
+    color: black;
+}
+
 .intro {
     text-align: center;
     height: 35vh;
