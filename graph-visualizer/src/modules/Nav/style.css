@@ -1,0 +1,36 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav {
+  height: 7vh;
+  width: 100vw;
+  padding: 2rem 0 0.25rem 1rem;
+}
+
+nav h1:hover {
+  color: var(--pink);
+  cursor: pointer;
+}
+
+nav ul {
+  justify-content: space-between;
+  padding-top: 0.25rem;
+}
+
+nav li {
+  font-size: 1.2rem;
+}
+
+nav li:hover {
+  cursor: pointer;
+  font-size: 1.3rem;
+}

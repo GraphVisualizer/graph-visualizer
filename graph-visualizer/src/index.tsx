@@ -1,11 +1,10 @@
-import './App.css'
 import './index.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import AppModule from './modules/AppModule'
+import AppModule from './modules/App'
 import Contact from './modules/Contact'
 import Footer from './modules/Footer'
 import Home from './modules/Home'

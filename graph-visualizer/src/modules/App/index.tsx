@@ -1,11 +1,13 @@
+import './style.css'
+
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import Button from '../components/atoms/Button'
-import Graph from '../components/Graph'
-import AdjacencyImportForm from '../components/organisms/AdjacencyImportForm'
-import Tooltip from '../components/Tooltip'
-import { useDataStore } from '../store/context'
+import Button from '../../components/atoms/Button'
+import Graph from '../../components/Graph'
+import AdjacencyImportForm from '../../components/organisms/AdjacencyImportForm'
+import Tooltip from '../../components/Tooltip'
+import { DataStoreProvider, useDataStore } from '../../store/context'
 
 const App: React.FunctionComponent = () => {
   const store = useDataStore()
@@ -134,5 +136,12 @@ const App: React.FunctionComponent = () => {
     </div>
   )
 }
+const AppModule: React.FunctionComponent = () => {
+  return (
+    <DataStoreProvider>
+      <App />
+    </DataStoreProvider>
+  )
+}
 
-export default App
+export default AppModule

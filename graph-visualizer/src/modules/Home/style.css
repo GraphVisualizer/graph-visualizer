@@ -80,7 +80,7 @@ section.start {
 
 .intro {
     text-align: center;
-    height: 30vh;
+    height: 35vh;
     width: 65vw;
     margin: auto;
     font-size: 1.5rem;
@@ -88,6 +88,10 @@ section.start {
 
 .intro p, .intro h2 {
     color:rgba(71, 100, 106, 1.0);
+}
+
+.intro h2 {
+    margin-bottom: 5vh;
 }
 
 .tutorial {
@@ -101,14 +105,9 @@ section.start {
 #sim {
     height: 40vh;
     width: 30vw;
+    margin-left: 15vw;
     overflow: hidden;
     background: white;
-}
-
-
-* {
-    margin: 0;
-    padding: 0;
 }
 
 .top {
