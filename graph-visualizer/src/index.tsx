@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import AppModule from './modules/AppModule'
-import Contact from './modules/contact'
+import Contact from './modules/Contact'
 import Home from './modules/Home'
 import Nav from './modules/Nav'
 import reportWebVitals from './reportWebVitals'
