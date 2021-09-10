@@ -2,7 +2,7 @@ import React from 'react'
 
 import ContactTemplate from './template'
 
-const App: React.FunctionComponent = () => {
+const Contact: React.FunctionComponent = () => {
   return (
     <ContactTemplate
       personArray={[
@@ -21,4 +21,4 @@ const App: React.FunctionComponent = () => {
   )
 }
 
-export default App
+export default Contact
