@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: white;
+}
+
+section.start {
+    background: rgba(135, 173, 182, 0.6);
+    filter: brightness(1.4);
+    padding-bottom: 5vh;
+    height: 60vh;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.landing {
+    padding-top: 10vh;
+    padding-left: 20vw;
+    padding-right: 30vw;
+    justify-content: space-between;
+    width: 65vw;
+    height: 50vh;
+}
+
+.landing-text {
+    text-align: center;
+    align-content: center;
+    width: 20vw;
+    margin-bottom: 8vh;
+}
+
+.landing-text h1, .landing-text p {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.landing-text h1 {
+    font-size: 2rem;
+    margin-bottom: 5vh;
+}
+
+.action {
+    height: 10vh;
+    padding-left: 20vw;
+    width: 65vw;
+}
+
+.action p {
+    color: black;
+    padding-top: 2vh;
+    font-size: 1.3rem;
+}
+
+.action button {
+    border: 1px solid var(--green);
+    background: var(--green);
+    filter: brightness(0.8);
+    width: 12vw;
+    height: 7vh;
+    font-size: 1.2rem;
+}
+
+.action button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.action button a:hover {
+    color: black;
+}
+
+.intro {
+    text-align: center;
+    height: 35vh;
+    width: 65vw;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+.intro p, .intro h2 {
+    color:rgba(71, 100, 106, 1.0);
+}
+
+.intro h2 {
+    margin-bottom: 5vh;
+}
+
+.tutorial {
+    overflow: hidden;
+    width: 100vw; 
+    height: 250vh;
+    background: rgba(71, 100, 106, 0.6);
+    filter: brightness(1.7);
+}
+
+#sim {
+    height: 40vh;
+    width: 30vw;
+    margin-left: 15vw;
+    overflow: hidden;
+    background: white;
+}
+
+.top {
+    width: 60vw;
+    margin: auto;
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+
+.alt {
+    width: 80vw;
+    margin-left: 20vw;
+}
+
+.alt section {
+    margin-left: 10vw;
+}
+
+.top section h3, section p {
+    color: white;
+}
+
+.top section h3 {
+    font-size: 1.8rem;
+}
+
+.top section p {
+    font-size: 1.4rem;
+    width: 30vw;
+}
+
+.fig {
+    background: white;
+    height: 40vh; 
+    width: 60vh;
+}

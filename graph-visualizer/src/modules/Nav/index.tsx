@@ -1,5 +1,4 @@
-import '../App.css'
-import '../index.css'
+import './style.css'
 
 import React from 'react'
 import { Link } from 'react-router-dom'
