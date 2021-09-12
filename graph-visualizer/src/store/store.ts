@@ -28,7 +28,9 @@ export function createStore() {
           data: { id: 'ab', source: 'a', target: 'b' },
         },
       ],
-      maxZoom: 1,
+      zoom: 1,
+      maxZoom: 3,
+      minZoom: 1,
     }),
     resetGraph() {
       this.graph.elements().remove()

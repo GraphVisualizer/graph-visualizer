@@ -43,29 +43,29 @@ ul {
   justify-content: center;
 }
 
+.button-subheading {
+  margin-top: 2vh;
+}
+
+.fns {
+  height: 8vh;
+  width: 79vw;
+  margin-left: 1vw;
+  background: #b9D7EA;
+  padding-bottom: 1vh;
+}
+
 section.visual {
-  width: 75vw;
-  height: 85vh;
-  margin-right: 1vw;
+  width: 79vw;
+  margin-left: 1vw;
+  height: 75vh;
   border: 1px solid grey;
   position: relative;
 }
 
-section.visual svg {
-  width: 25px;
-  position: absolute;
-  bottom: 5px;
-  right: 7px;
-}
-
-section.visual svg:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
 section.interface {
   width: 20vw;
-  height: 85vh;
+  height: 84vh;
   margin-right: 1vw;
   background: #b9D7EA;
   padding-left: 2rem;
@@ -78,7 +78,7 @@ section.interface {
 .tabs {
   background: none;
   height: 8vh;
-  width: 18vw;
+  width: 14vw;
   padding-bottom: 2vh;
   margin-top: -1vh;
   margin-bottom: 2vh;
@@ -95,10 +95,7 @@ section.interface div.head {
   width: 10vw;
 }
 
-#addNode {
-  margin-top: 3vh;
-}
-
+/*
 section.interface svg {
   height: 2vh;
   width: 2vw;
@@ -109,23 +106,29 @@ section.interface svg {
   cursor: pointer;
 }
 
+section.visual svg {
+  width: 25px;
+  position: absolute;
+  bottom: 5px;
+  right: 7px;
+}
+
+section.visual svg:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+*/
+
 .hide {
   visibility: hidden;
   max-height: 0;
 }
 
-#algorithms {
+#presets {
   height: 70vh;
+  justify-content: space-between;
 }
 
-#algorithms div {
+#algorithms, #algorithms div {
   height: 70vh;
-  padding-left: 1vw;
-}
-
-#algorithms button {
-  width: 15vw;
-  height: 6vh;
-  padding-top: 1vh;
-  font-size: 1.0rem;
 }
