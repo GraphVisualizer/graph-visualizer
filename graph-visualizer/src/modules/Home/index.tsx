@@ -34,9 +34,8 @@ const Home: React.FunctionComponent = () => {
       <div className="flex-column intro">
         <h2>What is Graph Visualizer?</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
+          This application is to help CS students learn and visualize graphs better. This software allows you to create
+          any graph you want and run various algorithms.
         </p>
       </div>
       <section className="tutorial">
@@ -51,30 +50,30 @@ const TutorialSection: React.FunctionComponent = () => {
     <TutorialTemplate
       tutorialElementsArray={[
         {
-          subheading: 'Subheading',
+          subheading: 'Adding a Node',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+            'This adds a node in the center. You can select it with your mouse and drag it around—it turns green when selected.',
           img: '',
           alt: false,
         },
         {
-          subheading: 'Subheading',
+          subheading: 'Deleting a Node',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+            'Select the node you would like deleted and then click the delete node button. This will erase any edges connected with that node.',
           img: '',
           alt: true,
         },
         {
-          subheading: 'Subheading',
+          subheading: 'Adding an Edge',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+            'Select the first node, click the add edge button, then click the second node you would like the edge to connect to.',
           img: '',
           alt: false,
         },
         {
-          subheading: 'Subheading',
+          subheading: 'Inputting Custom Graph',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
+            'Type into the input box following the pattern shown to the right and press submit. Your custom graph will then be shown along with a confirmation alert.',
           img: '',
           alt: true,
         },
