@@ -45,3 +45,11 @@ section.interface button:focus {
 .fns button:focus {
     cursor: pointer;
 }
+
+.tabs button {
+    background: #b9D7EA;
+}
+
+.tabs button:hover {
+    transform: scale(1.2);
+}
