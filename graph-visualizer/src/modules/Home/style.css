@@ -64,27 +64,9 @@ section.start {
     font-size: 1.3rem;
 }
 
-.action button {
-    border: 1px solid var(--green);
-    background: var(--green);
-    filter: brightness(0.8);
-    width: 12vw;
-    height: 7vh;
-    font-size: 1.2rem;
-}
-
-.action button:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.action button a:hover {
-    color: black;
-}
-
 .intro {
     text-align: center;
-    height: 35vh;
+    height: 32vh;
     width: 65vw;
     margin: auto;
     font-size: 1.5rem;
@@ -142,10 +124,4 @@ section.start {
 .top section p {
     font-size: 1.4rem;
     width: 30vw;
-}
-
-.fig {
-    background: white;
-    height: 40vh; 
-    width: 60vh;
 }
