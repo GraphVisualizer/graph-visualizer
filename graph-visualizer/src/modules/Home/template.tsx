@@ -2,7 +2,6 @@ import './style.css'
 
 import React from 'react'
 
-import Button from '../../components/atoms/Button'
 import GraphTemplate from '../../components/molecules/graphTemplate'
 
 interface TutorialTemplateProps {
@@ -10,6 +9,7 @@ interface TutorialTemplateProps {
     subheading: string
     description: string
     elements: cytoscape.ElementDefinition[]
+    index: number
     alt: boolean
   }[]
 }
@@ -29,17 +29,11 @@ const TutorialTemplate: React.FunctionComponent<TutorialTemplateProps> = ({
               <h3>{ele.subheading}</h3>
               <p>{ele.description}</p>
             </section>
-            <div className="fig">
-              <Button onClick={() => console.log()}>Fn</Button>
-              <GraphTemplate elements={ele.elements} />
-            </div>
+            <GraphTemplate index={ele.index} elements={ele.elements} />
           </div>
         ) : (
           <div key={index} className="flex-row top alt">
-            <div className="fig">
-              <Button onClick={() => console.log()}>Fn</Button>
-              <GraphTemplate elements={ele.elements} />
-            </div>
+            <GraphTemplate index={ele.index} elements={ele.elements} />
             <section className="flex-column">
               <h3>{ele.subheading}</h3>
               <p>{ele.description}</p>
@@ -52,6 +46,3 @@ const TutorialTemplate: React.FunctionComponent<TutorialTemplateProps> = ({
 }
 
 export default TutorialTemplate
-function uuidv4() {
-  throw new Error('Function not implemented.')
-}

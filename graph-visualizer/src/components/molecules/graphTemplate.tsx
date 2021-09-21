@@ -7,14 +7,16 @@ import { v4 as uuidv4 } from 'uuid'
 
 import layoutOptions from '../../store/layout'
 import defaultStyle from '../../store/style'
+import Button from '../atoms/Button'
 
 interface GraphTemplateProps {
   elements: cytoscape.ElementDefinition[]
+  index: number
 }
 
 cytoscape.use(cola)
 
-const GraphTemplate: React.FunctionComponent<GraphTemplateProps> = ({ elements }: GraphTemplateProps) => {
+const GraphTemplate: React.FunctionComponent<GraphTemplateProps> = ({ elements, index }: GraphTemplateProps) => {
   const container = useRef<HTMLDivElement>(null)
   const demo = {
     graph: cytoscape({
@@ -73,7 +75,15 @@ const GraphTemplate: React.FunctionComponent<GraphTemplateProps> = ({ elements }
     graph.mount(container.current as HTMLDivElement)
   }, [])
 
-  return <div className="graph" ref={container} />
+  const funcs = [demo.addNode, demo.deleteNode, demo.addEdge]
+  const names = ['Add Node', 'Delete Node', 'Add Edge']
+
+  return (
+    <div className="fig">
+      {index >= 0 && <Button onClick={funcs[index]}>{names[index]}</Button>}
+      <div className="graph" ref={container}></div>
+    </div>
+  )
 }
 
 export default GraphTemplate

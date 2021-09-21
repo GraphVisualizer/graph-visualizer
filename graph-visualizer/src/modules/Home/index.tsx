@@ -16,6 +16,7 @@ const Home: React.FunctionComponent = () => {
           </div>
           <div id="sim">
             <GraphTemplate
+              index={-1}
               elements={[
                 {
                   data: { id: 'a' },
@@ -81,6 +82,7 @@ const TutorialSection: React.FunctionComponent = () => {
           description:
             'This adds a node in the center. You can select it with your mouse and drag it around—it turns green when selected.',
           elements: [{ data: { id: 'a' } }],
+          index: 0,
           alt: false,
         },
         {
@@ -88,6 +90,7 @@ const TutorialSection: React.FunctionComponent = () => {
           description:
             'Select the node you would like deleted and then click the delete node button. This will erase any edges connected with that node.',
           elements: [{ data: { id: 'a' } }],
+          index: 1,
           alt: true,
         },
         {
@@ -95,6 +98,7 @@ const TutorialSection: React.FunctionComponent = () => {
           description:
             'Select the first node, click the add edge button, then click the second node you would like the edge to connect to.',
           elements: [{ data: { id: 'a' } }, { data: { id: 'b' } }],
+          index: 2,
           alt: false,
         },
         {
@@ -102,6 +106,7 @@ const TutorialSection: React.FunctionComponent = () => {
           description:
             'Type into the input box following the pattern shown to the right and press submit. Your custom graph will then be shown along with a confirmation alert.',
           elements: [{ data: {} }],
+          index: -1,
           alt: true,
         },
       ]}

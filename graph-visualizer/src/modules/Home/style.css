@@ -96,6 +96,10 @@ section.start {
     background: white;
 }
 
+#sim .fig > button {
+    display: hidden;
+}
+
 .top {
     width: 60vw;
     margin: auto;
