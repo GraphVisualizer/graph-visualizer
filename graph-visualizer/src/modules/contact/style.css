@@ -39,4 +39,6 @@ img {
   height: 40vh;
   width: 40vh;
   border-radius: 50%;
+  object-fit: cover;
+  filter: brightness(0.8);
 }
