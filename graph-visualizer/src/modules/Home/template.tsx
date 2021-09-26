@@ -14,9 +14,6 @@ interface TutorialTemplateProps {
   }[]
 }
 
-//  onClick{() => console.log()} event listeners are fillers,
-//    to be removed later
-
 const TutorialTemplate: React.FunctionComponent<TutorialTemplateProps> = ({
   tutorialElementsArray,
 }: TutorialTemplateProps) => {

@@ -35,7 +35,7 @@ section.interface button:focus {
 .action button {
     border: 1px solid #33e958;
     background: #33e958;
-    filter: brightness(0.8);
+    filter: brightness(0.833);
     width: 12vw;
     height: 7vh;
     font-size: 1.2rem;
