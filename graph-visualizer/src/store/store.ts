@@ -29,7 +29,7 @@ export function createStore() {
         },
       ],
       zoom: 1,
-      maxZoom: 3,
+      maxZoom: 2,
       minZoom: 1,
     }),
     resetGraph() {

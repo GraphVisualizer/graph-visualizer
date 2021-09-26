@@ -55,17 +55,16 @@ ul {
 }
 
 .fns {
-  height: 7vh;
+  height: 10vh;
   width: 79.1vw;
   margin-left: 1vw;
   background: #b9D7EA;
-  padding-bottom: 1vh;
 }
 
 section.visual {
   width: 79vw;
   margin-left: 1vw;
-  height: 62vh;
+  height: 60vh;
   border: 1px solid grey;
   border-top: none;
   position: relative;
@@ -96,8 +95,7 @@ div.buttons {
   background: white;
   height: 6vh;
   margin-top: -2vh;
-  width: 20vw;
-  padding-left: 2vw;
+  width: 22vw;
 }
 
 .tabs span {
@@ -109,30 +107,6 @@ section.interface div.head {
   margin-bottom: -3vh;
   width: 10vw;
 }
-
-/*
-section.interface svg {
-  height: 2vh;
-  width: 2vw;
-}
-
-.tooltip:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-section.visual svg {
-  width: 25px;
-  position: absolute;
-  bottom: 5px;
-  right: 7px;
-}
-
-section.visual svg:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-*/
 
 .hide {
   visibility: hidden;

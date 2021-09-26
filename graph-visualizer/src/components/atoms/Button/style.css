@@ -1,4 +1,4 @@
-section.interface button, .fns button {
+button {
     height: 3.5vh;
     width: 4.5vw;
     padding: 0.15rem 0.25rem;
@@ -8,13 +8,9 @@ section.interface button, .fns button {
     margin-left: 0.5vw;
 }
 
-section.interface button:hover {
+button:hover, button:focus {
     cursor: pointer;
     transform: scale(1.1);
-}
-
-section.interface button:focus {
-    cursor: pointer;
 }
 
 #algorithms button {
@@ -26,8 +22,13 @@ section.interface button:focus {
 
 #presets button {
     height: 5vh; 
-    width: 8vw;
-    margin-left: 3vw;
+    width: 12vw;
+    font-size: 0.9rem;
+}
+
+#presets button:last-child {
+    width: 7vw;
+    margin-left: 4vw;
 }
 
 .fns button {
@@ -37,19 +38,18 @@ section.interface button:focus {
     font-size: 1.1rem;
 }
 
-.fns button:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.fns button:focus {
-    cursor: pointer;
-}
-
 .tabs button {
+    width: 7vw;
+}
+
+.tabs button:first-child {
+    margin-right: -1vw;
+}
+
+button.inactiveTab {
     background: #b9D7EA;
 }
 
-.tabs button:hover {
-    transform: scale(1.2);
+button.activeTab {
+    background: rgb(239, 239, 239);
 }

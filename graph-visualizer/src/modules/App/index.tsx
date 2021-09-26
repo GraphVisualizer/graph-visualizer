@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid'
 import Button from '../../components/atoms/Button'
 import Graph from '../../components/Graph'
 import AdjacencyImportForm from '../../components/organisms/AdjacencyImportForm'
-//  import Tooltip from '../../components/Tooltip'
 import { DataStoreProvider, useDataStore } from '../../store/context'
 
 const App: React.FunctionComponent = () => {
@@ -50,10 +49,14 @@ const App: React.FunctionComponent = () => {
         <section className="interface flex-column">
           <div className="tabs">
             <span>
-              <Button onClick={() => setIsAlgTabOn(false)}>Templates</Button>
+              <Button name={isAlgTabOn ? 'activeTab' : 'inactiveTab'} onClick={() => setIsAlgTabOn(false)}>
+                Templates
+              </Button>
             </span>
             <span>
-              <Button onClick={() => setIsAlgTabOn(true)}>Algorithms</Button>
+              <Button name={!isAlgTabOn ? 'activeTab' : 'inactiveTab'} onClick={() => setIsAlgTabOn(true)}>
+                Algorithms
+              </Button>
             </span>
           </div>
           <div className="buttons">
