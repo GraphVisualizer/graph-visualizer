@@ -56,6 +56,7 @@ section.start {
     height: 10vh;
     padding-left: 20vw;
     width: 65vw;
+    padding-right: 5vw;
 }
 
 .action p {
@@ -80,7 +81,7 @@ section.start {
     margin-bottom: 5vh;
 }
 
-.tutorial {
+#tutorial {
     overflow: hidden;
     width: 100vw; 
     height: 180vh;

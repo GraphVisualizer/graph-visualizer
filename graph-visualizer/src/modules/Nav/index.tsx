@@ -2,6 +2,7 @@ import './style.css'
 
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 const Nav: React.FunctionComponent = () => {
   return (
@@ -11,7 +12,7 @@ const Nav: React.FunctionComponent = () => {
       </h1>
       <ul className="flex-row">
         <li>
-          <Link to="/">Tutorials</Link>
+          <HashLink to="/#tutorial">Tutorials</HashLink>
         </li>
         <li>
           <Link to="/app">Application</Link>
