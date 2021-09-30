@@ -20,7 +20,7 @@ const App: React.FunctionComponent<ContactTemplateProps> = ({ personArray }: Con
               <div className="imageContainer">
                 <img src={person.img} />
               </div>
-              <div className="bioContainer">{person.bio}</div>
+              <p className="bioContainer">{person.bio}</p>
             </div>
           )
         })}

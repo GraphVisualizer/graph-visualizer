@@ -1,7 +1,7 @@
 .container {
   background-color: rgba(135, 173, 182, 0.6);
   filter: brightness(1.4);
-  width: 100%;
+  width: 100vw;
 }
 
 .flexContainer {
@@ -15,7 +15,7 @@
   margin: 4vh 0 4vh 0;
   font-size: 30px;
   text-align: center;
-  color: floralwhite;
+  color: black;
 }
 
 .contactContainer {
@@ -39,4 +39,6 @@ img {
   height: 40vh;
   width: 40vh;
   border-radius: 50%;
+  object-fit: cover;
+  filter: brightness(0.8);
 }
