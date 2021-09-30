@@ -1,5 +1,4 @@
-import '../App.css'
-import '../index.css'
+import './style.css'
 
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -7,9 +6,9 @@ import { Link } from 'react-router-dom'
 const Nav: React.FunctionComponent = () => {
   return (
     <nav className="flex-row">
-      <Link to="/">
-        <h1>Graph Visualizer</h1>
-      </Link>
+      <h1>
+        <Link to="/">Graph Visualizer </Link>
+      </h1>
       <ul className="flex-row">
         <li>
           <Link to="/">Tutorials</Link>

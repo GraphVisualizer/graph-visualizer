@@ -1,4 +1,7 @@
 textarea {
-  width: 100px;
-  height: 100px;
+  width: 8vw;
+  height: 10vh;
+  margin-left: 3vw;
+  margin-top: 1vh;
+  resize: none;
 }

@@ -1,12 +1,12 @@
-import './App.css'
 import './index.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import AppModule from './modules/AppModule'
+import AppModule from './modules/App'
 import Contact from './modules/Contact'
+import Footer from './modules/Footer'
 import Home from './modules/Home'
 import Nav from './modules/Nav'
 import reportWebVitals from './reportWebVitals'
@@ -16,11 +16,12 @@ ReactDOM.render(
     <Router>
       <Nav />
       <Switch>
-        <Route path="/app" component={AppModule} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/App" component={AppModule} />
+        <Route path="/Contact" component={Contact} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>
+    <Footer />
   </React.StrictMode>,
   document.getElementById('root'),
 )

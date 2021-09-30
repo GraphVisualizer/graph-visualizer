@@ -4,7 +4,7 @@ import john from './img/john.jpeg'
 import junhyun from './img/junhyun.png'
 import ContactTemplate from './template'
 
-const App: React.FunctionComponent = () => {
+const Contact: React.FunctionComponent = () => {
   return (
     <ContactTemplate
       personArray={[
@@ -23,4 +23,4 @@ const App: React.FunctionComponent = () => {
   )
 }
 
-export default App
+export default Contact
