@@ -25,10 +25,13 @@ ul {
 .App {
   font-family: sans-serif;
   width: 100vw;
-  height: 100vh;;
+  margin-top: -8vh;
+  margin-bottom: 1vh;
+  height: 84vh;
   left: 0;
   top: 0;
-  margin-bottom: -16vh;
+  top: 0;
+  overflow: hidden;
 }
 
 .flex-row {
@@ -43,32 +46,45 @@ ul {
   justify-content: center;
 }
 
+.button-subheading {
+  margin-top: 2vh;
+}
+
+.main {
+  margin-top: 2vh;
+}
+
+.fns {
+  height: 10vh;
+  width: 79.1vw;
+  margin-left: 1vw;
+  background: #b9D7EA;
+}
+
 section.visual {
-  width: 75vw;
-  height: 85vh;
-  margin-right: 1vw;
+  width: 79vw;
+  margin-left: 1vw;
+  height: 60vh;
   border: 1px solid grey;
+  border-top: none;
   position: relative;
 }
 
-section.visual svg {
-  width: 25px;
-  position: absolute;
-  bottom: 5px;
-  right: 7px;
-}
-
-section.visual svg:hover {
-  transform: scale(1.05);
-  cursor: pointer;
+.main-visual {
+  height: 90vh;
+  padding-top: 1vh;
 }
 
 section.interface {
-  width: 20vw;
-  height: 85vh;
+  width: 22vw;
+  height: 75vh;
+  margin-top: 6vh;
   margin-right: 1vw;
   background: #b9D7EA;
-  padding-left: 2rem;
+}
+
+div.buttons {
+  padding-left: 2vw;
 }
 
 .page div {
@@ -76,13 +92,10 @@ section.interface {
 }
 
 .tabs {
-  background: none;
-  height: 8vh;
-  width: 18vw;
-  padding-bottom: 2vh;
-  margin-top: -1vh;
-  margin-bottom: 2vh;
-  border-bottom: 1px solid black;
+  background: white;
+  height: 6vh;
+  margin-top: -2vh;
+  width: 22vw;
 }
 
 .tabs span {
@@ -95,37 +108,16 @@ section.interface div.head {
   width: 10vw;
 }
 
-#addNode {
-  margin-top: 3vh;
-}
-
-section.interface svg {
-  height: 2vh;
-  width: 2vw;
-}
-
-.tooltip:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
 .hide {
   visibility: hidden;
   max-height: 0;
 }
 
-#algorithms {
+#presets {
   height: 70vh;
+  justify-content: space-between;
 }
 
-#algorithms div {
+#algorithms, #algorithms div {
   height: 70vh;
-  padding-left: 1vw;
-}
-
-#algorithms button {
-  width: 15vw;
-  height: 6vh;
-  padding-top: 1vh;
-  font-size: 1.0rem;
 }
