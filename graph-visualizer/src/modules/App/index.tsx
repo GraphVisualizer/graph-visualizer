@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import Button from '../../components/atoms/Button'
+import Tooltip from '../../components/atoms/Tooltip'
 import Graph from '../../components/Graph'
 import AdjacencyImportForm from '../../components/organisms/AdjacencyImportForm'
-import Tooltip from '../../components/Tooltip'
 import { DataStoreProvider, useDataStore } from '../../store/context'
 
 const App: React.FunctionComponent = () => {

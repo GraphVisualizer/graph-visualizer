@@ -2,7 +2,6 @@
     margin-bottom: 3vh;
 }
 
-
 section.interface button {
     height: 3.5vh;
     width: 4.5vw;
@@ -20,4 +19,33 @@ section.interface button:hover {
 
 section.interface button:focus {
     cursor: pointer;
+}
+
+.fig button {
+    background: #33e958;
+    border: none;
+    height: 5vh;
+}
+
+.fig button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.action button {
+    border: 1px solid #33e958;
+    background: #33e958;
+    filter: brightness(0.833);
+    width: 12vw;
+    height: 7vh;
+    font-size: 1.2rem;
+}
+
+.action button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.action button a:hover {
+    color: black;
 }
