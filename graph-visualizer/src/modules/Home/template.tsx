@@ -2,14 +2,11 @@ import './style.css'
 
 import React from 'react'
 
-import GraphTemplate from '../../components/molecules/graphTemplate'
-
 interface TutorialTemplateProps {
   tutorialElementsArray: {
     subheading: string
     description: string
-    elements: cytoscape.ElementDefinition[]
-    index: number
+    img: string
     alt: boolean
   }[]
 }
@@ -26,11 +23,15 @@ const TutorialTemplate: React.FunctionComponent<TutorialTemplateProps> = ({
               <h3>{ele.subheading}</h3>
               <p>{ele.description}</p>
             </section>
-            <GraphTemplate index={ele.index} elements={ele.elements} />
+            <div className="fig">
+              <img src={ele.img} />
+            </div>
           </div>
         ) : (
           <div key={index} className="flex-row top alt">
-            <GraphTemplate index={ele.index} elements={ele.elements} />
+            <div className="fig">
+              <img src={ele.img} />
+            </div>
             <section className="flex-column">
               <h3>{ele.subheading}</h3>
               <p>{ele.description}</p>

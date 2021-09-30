@@ -101,19 +101,25 @@ section.start {
 }
 
 .top {
-    width: 60vw;
+    width: 80vw;
     margin: auto;
     margin-top: 10vh;
     margin-bottom: 20vh;
+    padding-right: 10vw;
 }
 
 .alt {
     width: 80vw;
-    margin-left: 20vw;
+    margin-left: 10vw;
+    padding-right: 10vw;
 }
 
 .alt section {
-    margin-left: 10vw;
+    margin-left: 8vw;
+}
+
+.top section {
+    margin-left: 5vw;
 }
 
 .top section h3, section p {
@@ -128,4 +134,17 @@ section.start {
 .top section p {
     font-size: 1.4rem;
     width: 30vw;
+}
+
+.fig {
+    background: white;
+    height: 40vh; 
+    width: 80vw;
+    overflow: hidden;
+}
+
+.fig img {
+    width: 80vw;
+    height: 40vh;
+    object-fit: contain;
 }

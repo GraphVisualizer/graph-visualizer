@@ -1,8 +1,11 @@
 import './style.css'
 
-import React from 'react'
+import cytoscape from 'cytoscape'
+import cola from 'cytoscape-cola'
+import React, { useEffect, useRef } from 'react'
 
-import GraphTemplate from '../../components/molecules/graphTemplate'
+import layoutOptions from '../../store/layout'
+import defaultStyle from '../../store/style'
 import TutorialTemplate from './template'
 
 const Home: React.FunctionComponent = () => {
@@ -15,41 +18,7 @@ const Home: React.FunctionComponent = () => {
             <p>We are glad you came to check out our app.</p>
           </div>
           <div id="sim">
-            <GraphTemplate
-              index={-1}
-              elements={[
-                {
-                  data: { id: 'a' },
-                },
-                {
-                  data: { id: 'b' },
-                },
-                {
-                  data: { id: 'c' },
-                },
-                {
-                  data: { id: 'd' },
-                },
-                {
-                  data: { id: 'e' },
-                },
-                {
-                  data: { id: 'ab', source: 'a', target: 'b' },
-                },
-                {
-                  data: { id: 'bc', source: 'b', target: 'c' },
-                },
-                {
-                  data: { id: 'ac', source: 'c', target: 'a' },
-                },
-                {
-                  data: { id: 'ad', source: 'd', target: 'a' },
-                },
-                {
-                  data: { id: 'de', source: 'd', target: 'e' },
-                },
-              ]}
-            />
+            <GraphTemplate />
           </div>
         </div>
         <div className="action flex-row">
@@ -81,37 +50,104 @@ const TutorialSection: React.FunctionComponent = () => {
           subheading: 'Adding a Node',
           description:
             'This adds a node in the center. You can select it with your mouse and drag it around—it turns green when selected.',
-          elements: [{ data: { id: 'a' } }],
-          index: 0,
+          img: '',
           alt: false,
         },
         {
           subheading: 'Deleting a Node',
           description:
             'Select the node you would like deleted and then click the delete node button. This will erase any edges connected with that node.',
-          elements: [{ data: { id: 'a' } }],
-          index: 1,
+          img: '',
           alt: true,
         },
         {
           subheading: 'Adding an Edge',
           description:
             'Select the first node, click the add edge button, then click the second node you would like the edge to connect to.',
-          elements: [{ data: { id: 'a' } }, { data: { id: 'b' } }],
-          index: 2,
+          img: '',
           alt: false,
         },
         {
           subheading: 'Inputting Custom Graph',
           description:
             'Type into the input box following the pattern shown to the right and press submit. Your custom graph will then be shown along with a confirmation alert.',
-          elements: [{ data: {} }],
-          index: -1,
+          img: '',
           alt: true,
         },
       ]}
     />
   )
+}
+
+cytoscape.use(cola)
+
+const GraphTemplate: React.FunctionComponent = () => {
+  const container = useRef<HTMLDivElement>(null)
+  const demo = {
+    graph: cytoscape({
+      style: defaultStyle,
+      layout: { name: 'preset' },
+      elements: [
+        {
+          data: { id: 'a' },
+        },
+        {
+          data: { id: 'b' },
+        },
+        {
+          data: { id: 'c' },
+        },
+        {
+          data: { id: 'd' },
+        },
+        {
+          data: { id: 'e' },
+        },
+        {
+          data: { id: 'ab', source: 'a', target: 'b' },
+        },
+        {
+          data: { id: 'bc', source: 'b', target: 'c' },
+        },
+        {
+          data: { id: 'ac', source: 'c', target: 'a' },
+        },
+        {
+          data: { id: 'ad', source: 'd', target: 'a' },
+        },
+        {
+          data: { id: 'de', source: 'd', target: 'e' },
+        },
+      ],
+      zoom: 1,
+      maxZoom: 2,
+      userZoomingEnabled: false,
+      userPanningEnabled: false,
+    }),
+
+    layout: {} as cytoscape.Layouts,
+    createLayout(options: cytoscape.LayoutOptions) {
+      this.layout = this.graph.layout(options)
+    },
+
+    refreshLayout() {
+      this.layout.stop()
+      this.layout = this.graph.elements().makeLayout(layoutOptions.cola)
+      this.layout.run()
+    },
+  }
+
+  demo.createLayout(layoutOptions.cola)
+
+  demo.refreshLayout()
+
+  const { graph } = demo
+
+  useEffect(() => {
+    graph.mount(container.current as HTMLDivElement)
+  }, [])
+
+  return <div className="graph" ref={container}></div>
 }
 
 export default Home
