@@ -64,27 +64,9 @@ section.start {
     font-size: 1.3rem;
 }
 
-.action button {
-    border: 1px solid var(--green);
-    background: var(--green);
-    filter: brightness(0.8);
-    width: 12vw;
-    height: 7vh;
-    font-size: 1.2rem;
-}
-
-.action button:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.action button a:hover {
-    color: black;
-}
-
 .intro {
     text-align: center;
-    height: 35vh;
+    height: 32vh;
     width: 65vw;
     margin: auto;
     font-size: 1.5rem;
@@ -101,7 +83,7 @@ section.start {
 .tutorial {
     overflow: hidden;
     width: 100vw; 
-    height: 250vh;
+    height: 180vh;
     background: rgba(71, 100, 106, 0.6);
     filter: brightness(1.7);
 }
@@ -114,20 +96,29 @@ section.start {
     background: white;
 }
 
+#sim .fig > button {
+    display: hidden;
+}
+
 .top {
-    width: 60vw;
+    width: 70vw;
     margin: auto;
     margin-top: 10vh;
     margin-bottom: 20vh;
 }
 
 .alt {
-    width: 80vw;
-    margin-left: 20vw;
+    width: 60vw;
+    margin-left: 10vw;
+    padding-left: 10vw;
 }
 
 .alt section {
-    margin-left: 10vw;
+    margin-left: 8vw;
+}
+
+.top section {
+    margin-left: 5vw;
 }
 
 .top section h3, section p {
@@ -136,6 +127,7 @@ section.start {
 
 .top section h3 {
     font-size: 1.8rem;
+    margin-bottom: 3vh;
 }
 
 .top section p {
@@ -146,5 +138,12 @@ section.start {
 .fig {
     background: white;
     height: 40vh; 
-    width: 60vh;
+    width: 40vw;
+    overflow: hidden;
+}
+
+.fig img {
+    width: 20vw;
+    height: 40vh;
+    object-fit: contain;
 }

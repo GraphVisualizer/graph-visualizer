@@ -27,3 +27,11 @@
     padding-left: 20vw;
     padding-top: 6vh;
 }
+
+.contact a:hover {
+    color: white;
+}
+
+.icon {
+    margin-right: 1vw;
+}
