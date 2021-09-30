@@ -69,8 +69,8 @@ button.activeTab {
     border: 1px solid #33e958;
     background: #33e958;
     filter: brightness(0.833);
-    width: 12vw;
-    height: 7vh;
+    width: 10vw;
+    height: 5vh;
     font-size: 1.2rem;
 }
 
