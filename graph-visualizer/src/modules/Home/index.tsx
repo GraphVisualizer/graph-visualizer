@@ -38,7 +38,7 @@ const Home: React.FunctionComponent = () => {
           any graph you want and run various algorithms.
         </p>
       </div>
-      <section className="tutorial">
+      <section id="tutorial">
         <TutorialSection />
       </section>
     </div>
