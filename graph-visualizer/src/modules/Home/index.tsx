@@ -6,6 +6,9 @@ import React, { useEffect, useRef } from 'react'
 
 import layoutOptions from '../../store/layout'
 import defaultStyle from '../../store/style'
+import addEdge from './img/addEdge.gif'
+import addNode from './img/addNode.gif'
+import deleteNode from './img/deleteNode.gif'
 import TutorialTemplate from './template'
 
 const Home: React.FunctionComponent = () => {
@@ -50,21 +53,21 @@ const TutorialSection: React.FunctionComponent = () => {
           subheading: 'Adding a Node',
           description:
             'This adds a node in the center. You can select it with your mouse and drag it around—it turns green when selected.',
-          img: '',
+          img: addNode,
           alt: false,
         },
         {
           subheading: 'Deleting a Node',
           description:
             'Select the node you would like deleted and then click the delete node button. This will erase any edges connected with that node.',
-          img: '',
+          img: deleteNode,
           alt: true,
         },
         {
           subheading: 'Adding an Edge',
           description:
             'Select the first node, click the add edge button, then click the second node you would like the edge to connect to.',
-          img: '',
+          img: addEdge,
           alt: false,
         },
         {

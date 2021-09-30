@@ -101,17 +101,16 @@ section.start {
 }
 
 .top {
-    width: 80vw;
+    width: 70vw;
     margin: auto;
     margin-top: 10vh;
     margin-bottom: 20vh;
-    padding-right: 10vw;
 }
 
 .alt {
-    width: 80vw;
+    width: 60vw;
     margin-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 10vw;
 }
 
 .alt section {
@@ -139,12 +138,12 @@ section.start {
 .fig {
     background: white;
     height: 40vh; 
-    width: 80vw;
+    width: 40vw;
     overflow: hidden;
 }
 
 .fig img {
-    width: 80vw;
+    width: 20vw;
     height: 40vh;
     object-fit: contain;
 }
