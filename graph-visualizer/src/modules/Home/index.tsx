@@ -6,6 +6,9 @@ import React, { useEffect, useRef } from 'react'
 
 import layoutOptions from '../../store/layout'
 import defaultStyle from '../../store/style'
+import addEdge from './img/addEdge.gif'
+import addNode from './img/addNode.gif'
+import deleteNode from './img/deleteNode.gif'
 import TutorialTemplate from './template'
 
 const Home: React.FunctionComponent = () => {
@@ -15,13 +18,10 @@ const Home: React.FunctionComponent = () => {
         <div className="flex-row landing">
           <div className="flex-column landing-text">
             <h1>Welcome</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
-            </p>
+            <p>We are glad you came to check out our app.</p>
           </div>
           <div id="sim">
-            <Graph />
+            <GraphTemplate />
           </div>
         </div>
         <div className="action flex-row">
@@ -34,9 +34,8 @@ const Home: React.FunctionComponent = () => {
       <div className="flex-column intro">
         <h2>What is Graph Visualizer?</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
+          This application is to help CS students learn and visualize graphs better. This software allows you to create
+          any graph you want and run various algorithms.
         </p>
       </div>
       <section className="tutorial">
@@ -51,32 +50,25 @@ const TutorialSection: React.FunctionComponent = () => {
     <TutorialTemplate
       tutorialElementsArray={[
         {
-          subheading: 'Subheading',
+          subheading: 'Adding a Node',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
-          img: '',
+            'This adds a node in the center. You can select it with your mouse and drag it around—it turns green when selected.',
+          img: addNode,
           alt: false,
         },
         {
-          subheading: 'Subheading',
+          subheading: 'Deleting a Node',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
-          img: '',
+            'Select the node you would like deleted and then click the delete node button. This will erase any edges connected with that node.',
+          img: deleteNode,
           alt: true,
         },
         {
-          subheading: 'Subheading',
+          subheading: 'Adding an Edge',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
-          img: '',
+            'Select the first node, click the add edge button, then click the second node you would like the edge to connect to.',
+          img: addEdge,
           alt: false,
-        },
-        {
-          subheading: 'Subheading',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque mollis velit ut malesuada. Donec volutpat leo ut odio aliquet molestie.',
-          img: '',
-          alt: true,
         },
       ]}
     />
@@ -85,9 +77,9 @@ const TutorialSection: React.FunctionComponent = () => {
 
 cytoscape.use(cola)
 
-const Graph: React.FunctionComponent = () => {
+const GraphTemplate: React.FunctionComponent = () => {
   const container = useRef<HTMLDivElement>(null)
-  const graphDemo = {
+  const demo = {
     graph: cytoscape({
       style: defaultStyle,
       layout: { name: 'preset' },
@@ -123,7 +115,8 @@ const Graph: React.FunctionComponent = () => {
           data: { id: 'de', source: 'd', target: 'e' },
         },
       ],
-      maxZoom: 1,
+      zoom: 1,
+      maxZoom: 2,
       userZoomingEnabled: false,
       userPanningEnabled: false,
     }),
@@ -140,17 +133,17 @@ const Graph: React.FunctionComponent = () => {
     },
   }
 
-  graphDemo.createLayout(layoutOptions.cola)
+  demo.createLayout(layoutOptions.cola)
 
-  graphDemo.refreshLayout()
+  demo.refreshLayout()
 
-  const { graph } = graphDemo
+  const { graph } = demo
 
   useEffect(() => {
     graph.mount(container.current as HTMLDivElement)
   }, [])
 
-  return <div className="graph" ref={container} />
+  return <div className="graph" ref={container}></div>
 }
 
 export default Home
