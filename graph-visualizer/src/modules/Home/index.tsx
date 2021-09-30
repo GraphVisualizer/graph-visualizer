@@ -70,13 +70,6 @@ const TutorialSection: React.FunctionComponent = () => {
           img: addEdge,
           alt: false,
         },
-        {
-          subheading: 'Inputting Custom Graph',
-          description:
-            'Type into the input box following the pattern shown to the right and press submit. Your custom graph will then be shown along with a confirmation alert.',
-          img: '',
-          alt: true,
-        },
       ]}
     />
   )
