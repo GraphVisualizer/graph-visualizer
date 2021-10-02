@@ -1,0 +1,23 @@
+section.interface svg {
+    height: 2vh;
+    width: 2vw;
+  }
+  
+  .tooltip:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  
+  section.visual svg {
+    width: 25px;
+    position: absolute;
+    bottom: 5px;
+    right: 7px;
+  }
+  
+  section.visual svg:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  
+  
