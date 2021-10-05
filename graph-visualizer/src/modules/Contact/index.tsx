@@ -11,7 +11,7 @@ const Contact: React.FunctionComponent = () => {
         {
           img: john,
           bio:
-            "John Lu recently graduated from Santa Clara University with a Bachelor's in Computer Science. His hobbies include poetry, cooking, and longboarding. John's interests in CS lie in web development.",
+            "Hiya, I'm John Lu, and I recently graduated from Santa Clara University with a Bachelor's in Computer Science. My hobbies include poetry, cooking, web dev, and longboarding. ",
         },
         {
           img: junhyun,
