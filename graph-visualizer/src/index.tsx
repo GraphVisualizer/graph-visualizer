@@ -1,8 +1,8 @@
 import './index.css'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom'
 
 import AppModule from './modules/App'
 import Contact from './modules/Contact'
@@ -11,15 +11,33 @@ import Home from './modules/Home'
 import Nav from './modules/Nav'
 import reportWebVitals from './reportWebVitals'
 
+const RoutingComponent: React.FunctionComponent = () => {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash === '#tutorial' && pathname === '/') {
+      setTimeout(() => {
+        const id = hash.replace('#', '')
+        const ele = document.getElementById(id)
+        if (ele) ele.scrollIntoView({ behavior: 'smooth' })
+      }, 0)
+    }
+  }, [pathname, hash])
+
+  return (
+    <Switch>
+      <Route path="/App" component={AppModule} />
+      <Route path="/Contact" component={Contact} />
+      <Route path="/" component={Home} />
+    </Switch>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Nav />
-      <Switch>
-        <Route path="/App" component={AppModule} />
-        <Route path="/Contact" component={Contact} />
-        <Route path="/" component={Home} />
-      </Switch>
+      <RoutingComponent />
     </Router>
     <Footer />
   </React.StrictMode>,
