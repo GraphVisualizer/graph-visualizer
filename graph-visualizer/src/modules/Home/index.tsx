@@ -3,6 +3,7 @@ import './style.css'
 import cytoscape from 'cytoscape'
 import cola from 'cytoscape-cola'
 import React, { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 import layoutOptions from '../../store/layout'
 import defaultStyle from '../../store/style'
@@ -27,7 +28,7 @@ const Home: React.FunctionComponent = () => {
         <div className="action flex-row">
           <p>Check out our app or read our tutorial below!</p>
           <button>
-            <a href="../App">Check it out!</a>
+            <Link to="../App">Check it out!</Link>
           </button>
         </div>
       </section>

@@ -9,7 +9,6 @@ const Footer: React.FunctionComponent = () => {
     <div className="flex-column footer">
       <div className="flex-row contact">
         <h4>
-          <FontAwesomeIcon className="icon" icon={['fab', 'github']} />
           <a href="https://github.com/jfantab/graph-visualizer" rel="noreferrer" target="_blank">
             Github Repo
           </a>

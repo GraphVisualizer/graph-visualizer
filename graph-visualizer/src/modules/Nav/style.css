@@ -9,10 +9,9 @@ nav h1 {
   font-weight: 700;
 }
 
-nav h1:hover {
+nav h1 > Link:hover {
   color: var(--pink);
   cursor: pointer;
-  font-size: 1.7rem;
 }
 
 nav ul {
@@ -25,7 +24,7 @@ nav li {
   font-size: 1.3rem;
 }
 
-nav li:hover {
+nav li a:hover {
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
