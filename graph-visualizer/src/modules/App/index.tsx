@@ -1,4 +1,5 @@
 import './style.css'
+import './responsive.css'
 
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
@@ -35,6 +36,10 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div className="App">
+      <div className="mobile flex-column">
+        <h1>This page is currently undergoing renovation. Check back later!</h1>
+        <i className="fas fa-robot"></i>
+      </div>
       <div className="main flex-row">
         <div className="flex-column main-visual">
           <div className="flex-row fns">
@@ -49,16 +54,12 @@ const App: React.FunctionComponent = () => {
         </div>
         <section className="interface flex-column">
           <div className="tabs">
-            <span>
-              <Button name={isAlgTabOn ? 'activeTab' : 'inactiveTab'} onClick={() => setIsAlgTabOn(false)}>
-                Templates
-              </Button>
-            </span>
-            <span>
-              <Button name={!isAlgTabOn ? 'activeTab' : 'inactiveTab'} onClick={() => setIsAlgTabOn(true)}>
-                Algorithms
-              </Button>
-            </span>
+            <Button name={isAlgTabOn ? 'activeTab' : 'inactiveTab'} onClick={() => setIsAlgTabOn(false)}>
+              Templates
+            </Button>
+            <Button name={!isAlgTabOn ? 'activeTab' : 'inactiveTab'} onClick={() => setIsAlgTabOn(true)}>
+              Algorithms
+            </Button>
           </div>
           <div className="buttons">
             {!isAlgTabOn ? (
@@ -83,34 +84,32 @@ const App: React.FunctionComponent = () => {
                 <AdjacencyImportForm />
               </div>
             ) : (
-              <div className={'page'} id="algorithms">
-                <div>
-                  <Button onClick={() => clearGraphAlgs()}>
-                    <h3>Clear</h3>
-                  </Button>
-                  <h4 className="button-subheading">Minimum Spanning Tree</h4>
-                  <Button onClick={() => kruskal()}>
-                    <h3>Kruskal</h3>
-                  </Button>
-                  <Button onClick={() => prim()}>
-                    <h3>Prim</h3>
-                  </Button>
-                  <h4 className="button-subheading">Connected Components</h4>
-                  <Button onClick={() => cutVertices()}>
-                    <h3>Cut Vertices</h3>
-                  </Button>
-                  <h4 className="button-subheading">Search Algorithms</h4>
-                  <Button onClick={() => bfs()}>
-                    <h3>Breadth First Search</h3>
-                  </Button>
-                  <Button onClick={() => dfs()}>
-                    <h3>Depth First Search</h3>
-                  </Button>
-                  <h4 className="button-subheading">Shortest Path Algorithm</h4>
-                  <Button onClick={() => dijkstra()}>
-                    <h3>Dijkstra</h3>
-                  </Button>
-                </div>
+              <div className="page flex-column" id="algorithms">
+                <Button onClick={() => clearGraphAlgs()}>
+                  <h3>Clear</h3>
+                </Button>
+                <h4 className="button-subheading">Minimum Spanning Tree</h4>
+                <Button onClick={() => kruskal()}>
+                  <h3>Kruskal</h3>
+                </Button>
+                <Button onClick={() => prim()}>
+                  <h3>Prim</h3>
+                </Button>
+                <h4 className="button-subheading">Connected Components</h4>
+                <Button onClick={() => cutVertices()}>
+                  <h3>Cut Vertices</h3>
+                </Button>
+                <h4 className="button-subheading">Search Algorithms</h4>
+                <Button onClick={() => bfs()}>
+                  <h3>Breadth First Search</h3>
+                </Button>
+                <Button onClick={() => dfs()}>
+                  <h3>Depth First Search</h3>
+                </Button>
+                <h4 className="button-subheading">Shortest Path Algorithm</h4>
+                <Button onClick={() => dijkstra()}>
+                  <h3>Dijkstra</h3>
+                </Button>
               </div>
             )}
           </div>
@@ -119,6 +118,7 @@ const App: React.FunctionComponent = () => {
     </div>
   )
 }
+
 const AppModule: React.FunctionComponent = () => {
   return (
     <DataStoreProvider>

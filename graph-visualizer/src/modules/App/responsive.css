@@ -1,0 +1,62 @@
+@media screen and (max-width: 576px) {
+    .main {
+        display: none;
+    }
+
+    div.mobile {
+        display: flex;
+     
+        height: 600px;
+        width: 80vw;
+
+        margin: auto;
+        margin-top: 80px;
+    }
+
+    div.mobile i {
+        font-size: 8rem;
+        margin-top: 100px;
+        margin-left: 20vw;
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    section.interface,
+    div.tabs {
+        width: 55vw;
+        overflow: hidden;
+    }
+
+    section.visual,
+    div.fns {
+        width: 60vw;
+    }
+
+    div#presets h4.button-subheading,
+    div#algorithms h4.button-subheading { /* TODO */
+        width: 55vw;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1800px) {
+    section.interface {
+        width: 35vw;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    div.tabs {
+        width: 35vw;
+        overflow: hidden;
+    }
+    
+    section.visual,
+    div.fns {
+        width: 70vw;
+    }
+
+    div#algorithms h4.button-subheading {
+        width: 60vw;
+        font-size: 1.1em;
+    }
+}

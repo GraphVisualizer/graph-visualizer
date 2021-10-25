@@ -1,4 +1,5 @@
 import './style.css'
+import './responsive.css'
 
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
@@ -56,7 +57,7 @@ const App: React.FunctionComponent = () => {
   }, [formValue])
 
   return (
-    <div>
+    <div id="import-form">
       <TextArea value={textVal} onChange={changeTextVal} />
       <Button onClick={() => changeFormValue(textVal)}>Submit</Button>
     </div>

@@ -1,44 +1,43 @@
-.flex-row {
+footer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.footer {
+    justify-content: flex-end;
+    
     background: rgba(135, 173, 182, 1.0);
-    bottom: 0;
-    left: 0;
-    right: 0;
     width: 100vw;
     height: 20vh;
+
+    bottom: 0;
+    right: 0;
+
+    font-weight: 300;
     font-size: 1.3rem;
 }
 
-.contact {
-    width: 80vw;
-    height: 12vh;
-    padding-left: 20vw;
-    padding-top: 6vh;
+footer div {
+    height: 20vh;
+    width: 10vw;
+    margin-right: 5vw;
 }
 
-.contact h4, h4 > a {
+footer i {
+    font-size: 1.4em;
+    margin-right: -5vw;
+}
+
+footer h4, 
+footer h4 > a {
     color: white;
-    font-size: 1.4rem;
 }
 
-.contact a:hover {
+footer h4 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vh;
+}
+
+footer a:hover {
     color: #ffa6a0;
-    font-size: 1.6rem;
-}
-
-.icon {
-    margin-right: 1vw;
 }
 
 small {

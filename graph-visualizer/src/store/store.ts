@@ -32,6 +32,7 @@ export function createStore() {
       maxZoom: 2,
       minZoom: 1,
     }),
+
     resetGraph() {
       this.graph.elements().remove()
     },
@@ -282,6 +283,8 @@ export function createStore() {
   store.createLayout(layoutOptions.cola)
 
   store.refreshLayout()
+
+  window.addEventListener('resize', () => store.refreshLayout())
 
   return store
 }
