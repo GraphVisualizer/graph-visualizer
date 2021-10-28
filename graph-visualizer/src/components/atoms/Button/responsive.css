@@ -1,0 +1,122 @@
+@media screen and (max-width: 576px) {
+    button.app-button {
+        width: 45vw;
+        height: 60px;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    button.redirect-desktop {
+        display: none;
+    }
+
+    button.redirect-mobile {
+        display: block;
+        height: 70px;
+        width: 27vw;
+    }
+
+    div.fns button {
+        height: 50px;
+        width: 10vw;
+
+        margin: 0;
+        margin-right: 3vw;
+        margin-top: 3vw;
+    }
+
+    div.tabs button {
+        width: 14vw;
+        margin-right: 2vw;
+    }
+
+    div#presets button {
+        width: 25vw;
+        margin-left: 4vw;
+        font-size: 1.1em;
+    }
+
+    div#presets button:last-child {
+        width: 13vw;
+    }
+
+    div#algorithms button {
+        width: 25vw;
+        margin-left: 3vw;
+    }
+
+    div#algorithms h4.button-subheading {
+        width: 55vw;
+        font-size: 1.0em;
+        margin-top: 3vw;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px) {
+    button.redirect-desktop {
+        height: 50px;
+        width: 23vw;
+    }
+
+    div.fns button {
+        height: 50px;
+        width: 10vw;
+    }
+
+    div.tabs button {
+        width: 12vw;
+        margin-right: 1vw;
+    }
+
+    div#presets button {
+        width: 20vw;
+        margin-left: 1vw;
+        font-size: 1.1em;
+    }
+
+    div#presets button:last-child {
+        width: 10vw;
+    }
+
+    div#algorithms button {
+        width: 20vw;
+        margin-left: 1vw;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1800px) {
+    button.redirect-desktop {
+        width: 15vw;
+    }
+
+    div.fns button {
+        height: 40px;
+        width: 11vw;
+
+        margin: 0;
+        margin-right: 3vw;
+        margin-top: 2vw;
+    }
+
+    div.tabs button {
+        width: 11vw;
+        margin-right: 1vw;
+        font-size: 1.1em;
+    }
+
+    div#presets button {
+        width: 13vw;
+        margin-left: 4vw;
+        font-size: 1.1em;
+    }
+
+    div#presets button:last-child {
+        width: 10vw;
+    }
+
+    div#algorithms button {
+        width: 15vw;
+        margin-left: 3vw;
+    }
+}

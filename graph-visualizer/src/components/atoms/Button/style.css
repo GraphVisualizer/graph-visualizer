@@ -1,29 +1,27 @@
 button {
-    height: 3.5vh;
+    height: 35px;
     width: 4.5vw;
-    padding: 0.15rem 0.25rem;
     border-radius: 11px;
     border: white;
-    margin-top: 3vh;
+    margin-top: 27px;
     margin-left: 0.5vw;
 }
 
 button:hover, button:focus {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 #algorithms button {
     width: 13vw;
-    height: 6vh;
-    padding-top: 0.5vh;
-    font-size: 1.0rem;
+    height: 55px;
+    font-size: 1.1rem;
 }
 
 #presets button {
-    height: 5vh; 
+    height: 55px; 
     width: 12vw;
-    font-size: 0.9rem;
+    font-size: 1.0rem;
 }
 
 #presets button:last-child {
@@ -32,18 +30,18 @@ button:hover, button:focus {
 }
 
 .fns button {
-    height: 4vh;
+    height: 40px;
     width: 8vw;
     margin-right: 5vw;
     font-size: 1.1rem;
 }
 
 .tabs button {
+    height: 30px;
     width: 7vw;
-}
-
-.tabs button:first-child {
-    margin-right: -1vw;
+    margin-right: 1vw;
+    padding-bottom: 5px;
+    border-radius: 11px 11px 0 0;
 }
 
 button.inactiveTab {
@@ -54,31 +52,22 @@ button.activeTab {
     background: rgb(239, 239, 239);
 }
 
-.fig button {
-    background: #33e958;
-    border: none;
-    height: 5vh;
-}
-
-.fig button:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.action button {
-    border: 1px solid #33e958;
+button.app-button {
     background: #33e958;
     filter: brightness(0.833);
-    width: 10vw;
-    height: 5vh;
-    font-size: 1.2rem;
+    width: 12vw;
+    height: 6vh;
+    font-size: 1.5rem;
 }
 
-.action button:hover {
-    transform: scale(1.1);
+button.app-button:hover {
     cursor: pointer;
 }
 
-.action button a:hover {
+button.app-button a:hover {
     color: black;
+}
+
+button.redirect-mobile {
+    display: none;
 }

@@ -1,0 +1,25 @@
+@media screen and (max-width: 992px) {
+    .flexContainer {
+        flex-direction: column;
+    }
+
+    .contactContainer {
+        width: 85vw;
+        margin: auto;
+        margin-bottom: 5vh;
+    }
+    
+    .imageContainer {
+        width: 85vw;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1800px) {
+    .contactContainer {
+        width: 90vw;
+    }
+
+    .imageContainer {
+        width: 35vw;
+    }
+}

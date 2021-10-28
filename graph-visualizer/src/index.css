@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 :root {
   --green: #a9e8b6;
   --yellow: #ffd693;
@@ -5,7 +7,29 @@
   --purple: #43447a;
 }
 
+* {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Raleway', serif;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 body {
+  background: #F6FAFC;
   color: var(--purple);
   font-weight: lighter;
   margin: 0;

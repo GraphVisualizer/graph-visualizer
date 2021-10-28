@@ -1,11 +1,12 @@
 import './style.css'
+import './responsive.css'
 
 import React from 'react'
 
 interface ButtonProps {
   name?: string
   children: React.ReactNode
-  onClick: () => void
+  onClick?: () => void
 }
 
 const App: React.FunctionComponent<ButtonProps> = ({ name, children, onClick }: ButtonProps) => {
