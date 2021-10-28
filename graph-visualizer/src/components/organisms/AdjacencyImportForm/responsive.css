@@ -1,0 +1,20 @@
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    div#import-form {
+        height: 250px;
+    }
+
+    div#import-form textarea {
+        width: 20vw;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1800px) {
+    div#import-form {
+        height: 200px;
+    }
+
+    div#import-form textarea {
+        width: 14vw;
+        margin-left: 3vw;
+    }
+}

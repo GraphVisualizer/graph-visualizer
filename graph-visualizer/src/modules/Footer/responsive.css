@@ -1,0 +1,40 @@
+@media (max-width: 576px) {
+    footer {
+        flex-direction: column;
+
+        height: 30vh;
+    }
+
+    footer div {
+        width: 50vw;
+        margin: auto;
+    }
+
+    footer i {
+        margin-right: -30vw;
+    }
+
+    small {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    footer div {
+        width: 23vw;
+    }
+
+    footer i {
+        margin-right: -10vw;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1800px) {
+    footer div {
+        width: 20vw;
+    }
+
+    footer i {
+        margin-right: -12vw;
+    }
+}

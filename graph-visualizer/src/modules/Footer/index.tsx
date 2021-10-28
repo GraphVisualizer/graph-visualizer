@@ -1,33 +1,40 @@
 import './style.css'
+import './responsive.css'
 
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 const Footer: React.FunctionComponent = () => {
   return (
-    <div className="flex-column footer">
-      <div className="flex-row contact">
+    <footer>
+      <div className="flex-column">
         <h4>
+          <i className="fas fa-code-branch"></i>
           <a href="https://github.com/jfantab/graph-visualizer" rel="noreferrer" target="_blank">
-            Github Repo
+            Github
           </a>
         </h4>
         <h4>
-          <FontAwesomeIcon className="icon" icon={faUser} />
-          <a href="https://github.com/jfantab" rel="noreferrer" target="_blank">
-            Jfantab
-          </a>
-        </h4>
-        <h4>
-          <FontAwesomeIcon className="icon" icon={faUser} />
-          <a href="https://github.com/ensj" rel="noreferrer" target="_blank">
-            Ensj
+          <i className="fas fa-share-alt"></i>
+          <a href="https://devpost.com/software/graph-visualizer-sondk0" rel="noreferrer" target="_blank">
+            Devpost
           </a>
         </h4>
       </div>
-      <small>Copyright &#169; 2021</small>
-    </div>
+      <div className="flex-column">
+        <h4>
+          <i className="fab fa-github"></i>
+          <a href="https://github.com/jfantab" rel="noreferrer" target="_blank">
+            John
+          </a>
+        </h4>
+        <h4>
+          <i className="fab fa-github"></i>
+          <a href="https://github.com/ensj" rel="noreferrer" target="_blank">
+            Junhyun
+          </a>
+        </h4>
+      </div>
+    </footer>
   )
 }
 

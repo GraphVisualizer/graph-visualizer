@@ -1,46 +1,26 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background: white;
-}
-
 section.start {
     background: rgba(135, 173, 182, 0.6);
     filter: brightness(1.4);
-    padding-bottom: 5vh;
-    height: 60vh;
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding-bottom: 40px;
+    height: 500px;
 }
 
 .landing {
-    padding-top: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding-top: 80px;
     padding-left: 20vw;
-    padding-right: 30vw;
     justify-content: space-between;
     width: 65vw;
-    height: 50vh;
+    height: 400px;
 }
 
 .landing-text {
-    text-align: center;
-    align-content: center;
-    width: 20vw;
-    margin-bottom: 8vh;
-}
+    width: 40vw;
+    margin-bottom: 65px;
+} 
 
 .landing-text h1, .landing-text p {
     font-size: 1.5rem;
@@ -49,26 +29,13 @@ section.start {
 
 .landing-text h1 {
     font-size: 2rem;
-    margin-bottom: 5vh;
-}
-
-.action {
-    height: 10vh;
-    padding-left: 20vw;
-    width: 65vw;
-    padding-right: 5vw;
-}
-
-.action p {
-    color: black;
-    padding-top: 2vh;
-    font-size: 1.3rem;
+    margin-bottom: 40px;
 }
 
 .intro {
     text-align: center;
-    height: 32vh;
-    width: 65vw;
+    height: 300px;
+    width: 55vw;
     margin: auto;
     font-size: 1.5rem;
 }
@@ -78,44 +45,39 @@ section.start {
 }
 
 .intro h2 {
-    margin-bottom: 5vh;
+    margin-bottom: 40px;
 }
 
-#tutorial {
-    overflow: hidden;
+section#tutorial {
     width: 100vw; 
-    height: 180vh;
+    height: 1400px;
     background: rgba(71, 100, 106, 0.6);
     filter: brightness(1.7);
+    overflow-y: hidden;
 }
 
 #sim {
-    height: 40vh;
-    width: 30vw;
+    height: 330px;
+    width: 25vw;
     margin-left: 15vw;
-    overflow: hidden;
+    margin-bottom: 70px;
     background: white;
 }
 
-#sim .fig > button {
-    display: hidden;
-}
-
 .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
     width: 70vw;
-    margin: auto;
-    margin-top: 10vh;
-    margin-bottom: 20vh;
+    margin-left: 11vw;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 
 .alt {
     width: 60vw;
-    margin-left: 10vw;
-    padding-left: 10vw;
-}
-
-.alt section {
-    margin-left: 8vw;
+    margin-left: 20vw;
 }
 
 .top section {
@@ -128,7 +90,7 @@ section.start {
 
 .top section h3 {
     font-size: 1.8rem;
-    margin-bottom: 3vh;
+    margin-bottom: 25px;
 }
 
 .top section p {
@@ -138,13 +100,13 @@ section.start {
 
 .fig {
     background: white;
-    height: 40vh; 
+    height: 340px; 
     width: 40vw;
     overflow: hidden;
 }
 
 .fig img {
     width: 20vw;
-    height: 40vh;
-    object-fit: contain;
+    height: 340px;
+    object-fit: center;
 }

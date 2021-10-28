@@ -1,62 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-
-* {
-  margin-top: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  font-family: 'Raleway', serif;
-  color: black;
-}
-
-:root {
-  --pink: #ffa6a0;
-}
-
-body {
-  background: #F6FAFC;
-}
-
-ul {
-  list-style: none;
-  width: 80vw;
-}
-
 .App {
-  font-family: sans-serif;
   width: 100vw;
-  margin-top: -7vh;
-  margin-bottom: 1vh;
-  height: 84vh;
-  left: 0;
-  top: 0;
-  top: 0;
+  height: 760px;
+
+  margin-top: -50px;
+
   overflow: hidden;
 }
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .button-subheading {
-  margin-top: 2vh;
-}
-
-.main {
-  margin-top: 2vh;
+  margin-top: 12px;
+  padding: 5px;
+  overflow-y: hidden;
+  font-size: 1.2em;
+  width: 20vw;
 }
 
 .fns {
-  height: 10vh;
-  width: 79.1vw;
+  height: 90px;
+  width: 79vw;
   margin-left: 1vw;
   background: #b9D7EA;
 }
@@ -64,21 +25,19 @@ ul {
 section.visual {
   width: 79vw;
   margin-left: 1vw;
-  height: 60vh;
+  height: 570px;
   border: 1px solid grey;
   border-top: none;
-  position: relative;
 }
 
 .main-visual {
-  height: 90vh;
-  padding-top: 1vh;
+  height: 855px;
 }
 
 section.interface {
   width: 22vw;
-  height: 75vh;
-  margin-top: 6vh;
+  height: 700px;
+  margin-top: 55px;
   margin-right: 1vw;
   background: #b9D7EA;
 }
@@ -87,37 +46,32 @@ div.buttons {
   padding-left: 2vw;
 }
 
-.page div {
-  height: 20vh;
+div.page {
+  height: 180px;
 }
 
-.tabs {
-  background: white;
-  height: 6vh;
-  margin-top: -2vh;
-  width: 22vw;
-}
-
-.tabs span {
-  margin: 1rem;
+div.tabs {
+  background: #F6FAFC;
+  height: 56px;
+  width: 21vw;
 }
 
 section.interface div.head {
-  height: 5vh;
+  height: 40px;
   margin-bottom: -3vh;
   width: 10vw;
 }
 
 .hide {
-  visibility: hidden;
+  display: none;
   max-height: 0;
 }
 
 #presets {
-  height: 70vh;
+  height: 690px;
   justify-content: space-between;
 }
 
 #algorithms, #algorithms div {
-  height: 70vh;
+  height: 690px;
 }

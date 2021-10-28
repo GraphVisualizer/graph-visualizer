@@ -1,6 +1,6 @@
 import './style.css'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface TutorialTemplateProps {
   tutorialElementsArray: {
@@ -14,11 +14,19 @@ interface TutorialTemplateProps {
 const TutorialTemplate: React.FunctionComponent<TutorialTemplateProps> = ({
   tutorialElementsArray,
 }: TutorialTemplateProps) => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth <= 576)
+    })
+  })
+
   return (
     <div>
       {tutorialElementsArray.map((ele, index) => {
-        return ele.alt ? (
-          <div key={index} className="flex-row top">
+        return ele.alt && !isMobile ? (
+          <div key={index} className="top">
             <section className="flex-column">
               <h3>{ele.subheading}</h3>
               <p>{ele.description}</p>
@@ -28,7 +36,7 @@ const TutorialTemplate: React.FunctionComponent<TutorialTemplateProps> = ({
             </div>
           </div>
         ) : (
-          <div key={index} className="flex-row top alt">
+          <div key={index} className="top alt">
             <div className="fig">
               <img src={ele.img} />
             </div>

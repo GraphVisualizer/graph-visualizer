@@ -1,0 +1,9 @@
+div#import-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div#import-form textarea {
+    width: 8vw;
+}
