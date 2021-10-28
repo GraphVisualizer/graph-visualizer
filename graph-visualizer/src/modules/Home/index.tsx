@@ -144,7 +144,11 @@ const GraphTemplate: React.FunctionComponent = () => {
   const { graph } = demo
 
   useEffect(() => {
-    window.addEventListener('resize', () => demo.refreshLayout())
+    window.addEventListener('resize', () => {
+      demo.graph.fit()
+      demo.graph.resize()
+      demo.graph.center()
+    })
     graph.mount(container.current as HTMLDivElement)
   }, [])
 

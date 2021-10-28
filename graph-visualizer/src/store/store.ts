@@ -284,7 +284,11 @@ export function createStore() {
 
   store.refreshLayout()
 
-  window.addEventListener('resize', () => store.refreshLayout())
+  window.addEventListener('resize', () => {
+    store.graph.resize()
+    store.graph.center()
+    store.graph.fit()
+  })
 
   return store
 }
