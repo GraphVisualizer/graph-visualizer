@@ -34,7 +34,7 @@
     div#presets button {
         width: 25vw;
         margin-left: 4vw;
-        font-size: 1.1em;
+        font-size: 1.0em;
     }
 
     div#presets button:last-child {
@@ -44,6 +44,7 @@
     div#algorithms button {
         width: 25vw;
         margin-left: 3vw;
+        font-size: 0.8em;
     }
 
     div#algorithms h4.button-subheading {
@@ -53,7 +54,7 @@
     }
 }
 
-@media screen and (min-width: 769px) and (max-width: 991px) {
+@media screen and (min-width: 769px) and (max-width: 992px) {
     button.redirect-desktop {
         height: 50px;
         width: 23vw;
@@ -65,14 +66,14 @@
     }
 
     div.tabs button {
-        width: 12vw;
+        width: 11vw;
         margin-right: 1vw;
     }
 
     div#presets button {
         width: 20vw;
         margin-left: 1vw;
-        font-size: 1.1em;
+        font-size: 0.9em;
     }
 
     div#presets button:last-child {
@@ -85,7 +86,7 @@
     }
 }
 
-@media screen and (min-width: 992px) and (max-width: 1800px) {
+@media screen and (min-width: 993px) and (max-width: 1800px) {
     button.redirect-desktop {
         width: 15vw;
     }
@@ -95,20 +96,20 @@
         width: 11vw;
 
         margin: 0;
-        margin-right: 3vw;
+        margin-right: 5vw;
         margin-top: 2vw;
     }
 
     div.tabs button {
-        width: 11vw;
+        width: 8vw;
         margin-right: 1vw;
-        font-size: 1.1em;
+        font-size: 0.9em;
     }
 
     div#presets button {
-        width: 13vw;
-        margin-left: 4vw;
-        font-size: 1.1em;
+        width: 15vw;
+        margin-left: 2vw;
+        font-size: 1.0em;
     }
 
     div#presets button:last-child {
@@ -116,7 +117,7 @@
     }
 
     div#algorithms button {
-        width: 15vw;
-        margin-left: 3vw;
+        width: 12vw;
+        margin-left: 2vw;
     }
 }
