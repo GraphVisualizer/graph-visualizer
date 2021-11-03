@@ -1,23 +1,42 @@
 import './style.css'
+import './responsive.css'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link'
 
 const Nav: React.FunctionComponent = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
   return (
-    <nav className="flex-row">
+    <nav>
       <h1>
         <Link to="/">Graph Visualizer </Link>
       </h1>
-      <ul className="flex-row">
+      <i onClick={toggleMenu} className="mobile-toggle fas fa-bars"></i>
+      <ul className="desktop">
         <li>
-          <HashLink to="/#tutorial">Tutorials</HashLink>
+          <Link to="/#tutorial">Tutorials</Link>
         </li>
         <li>
           <Link to="/app">Application</Link>
         </li>
         <li>
+          <Link to="/contact">Contact Us</Link>
+        </li>
+      </ul>
+      <ul className={isMenuOpen ? 'mobile-menu mobile' : 'mobile'}>
+        <i onClick={toggleMenu} className="mobile-menu-close fas fa-times"></i>
+        <li onClick={toggleMenu}>
+          <Link to="/#tutorial">Tutorials</Link>
+        </li>
+        <li onClick={toggleMenu}>
+          <Link to="/app">Application</Link>
+        </li>
+        <li onClick={toggleMenu}>
           <Link to="/contact">Contact Us</Link>
         </li>
       </ul>
