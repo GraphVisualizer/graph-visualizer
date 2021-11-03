@@ -6,7 +6,9 @@ import React from 'react'
 interface ContactTemplateProps {
   personArray: {
     img: string
+    fallback: string
     bio: string
+    alt: string
   }[]
 }
 
@@ -19,7 +21,10 @@ const App: React.FunctionComponent<ContactTemplateProps> = ({ personArray }: Con
           return (
             <div key={index} className="contactContainer">
               <div className="imageContainer">
-                <img src={person.img} />
+                <picture>
+                  <source type="image/webp" srcSet={person.img}></source>
+                  <img src={person.fallback} alt={person.alt} />
+                </picture>
               </div>
               <p className="bioContainer">{person.bio}</p>
             </div>
