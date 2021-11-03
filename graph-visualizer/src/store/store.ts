@@ -237,14 +237,14 @@ export function createStore() {
         const v = edge.target()
         const setUIndex = findSetIndex(u)
         const setVIndex = findSetIndex(v)
-        const setU = forest[setUIndex]
-        const setV = forest[setVIndex]
+        // const setU = forest[setUIndex] //not entirely sure how deleting this fixes bug
+        // const setV = forest[setVIndex]
 
         if (setUIndex !== setVIndex) {
           A.merge(edge)
 
           // combine forests for u and v
-          setU.merge(setV)
+          // setU.merge(setV)
           forest.splice(setVIndex, 1)
         }
 
