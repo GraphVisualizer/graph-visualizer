@@ -31,9 +31,9 @@ button:hover, button:focus {
 
 .fns button {
     height: 40px;
-    width: 8vw;
-    margin-right: 5vw;
-    font-size: 1.1rem;
+    width: 9vw;
+    margin-right: 4vw;
+    font-size: 1.2rem;
 }
 
 .tabs button {

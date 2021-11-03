@@ -22,8 +22,9 @@
         width: 10vw;
 
         margin: 0;
-        margin-right: 3vw;
+        margin-right: 1vw;
         margin-top: 3vw;
+        font-size: 0.9em;
     }
 
     div.tabs button {
@@ -63,6 +64,10 @@
     div.fns button {
         height: 50px;
         width: 10vw;
+
+        margin: 0;
+        margin-right: 3vw;
+        margin-top: 3vw;
     }
 
     div.tabs button {
@@ -93,10 +98,10 @@
 
     div.fns button {
         height: 40px;
-        width: 11vw;
+        width: 12vw;
 
         margin: 0;
-        margin-right: 5vw;
+        margin-right: 2vw;
         margin-top: 2vw;
     }
 
