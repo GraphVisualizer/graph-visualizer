@@ -48,6 +48,12 @@ const edgeStyles = [
     },
   },
   {
+    selector: 'edge:selected',
+    style: {
+      'line-color': COLORS.green,
+    },
+  },
+  {
     selector: 'edge.alg',
     style: {
       'line-color': COLORS.red,

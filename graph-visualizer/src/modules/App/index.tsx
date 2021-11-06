@@ -16,6 +16,7 @@ const App: React.FunctionComponent = () => {
   const {
     addNode,
     addEdge,
+    deleteEdge,
     deleteNode,
     resetGraph,
     dijkstra,
@@ -47,6 +48,7 @@ const App: React.FunctionComponent = () => {
             <Button onClick={() => addNode(uuidv4())}>Add Node</Button>
             <Button onClick={() => deleteNode()}>Delete Node</Button>
             <Button onClick={() => addEdge()}>Add Edge</Button>
+            <Button onClick={() => deleteEdge()}>Delete Edge</Button>
           </div>
           <section className="visual">
             <Graph />
