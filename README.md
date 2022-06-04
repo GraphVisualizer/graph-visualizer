@@ -1,5 +1,7 @@
 # Graph Visualizer
 
+Link to our web app: ![https://www.graphvizer.com/](https://www.graphvizer.com/)
+
 The web app we created allows the user to create a graph of their choosing. Once they have done so, they can toggle over to the algorithms tab to simulate an algorithm on their graph, or gain information about their graph. Currently, the following are available to the users:
 
 - An iterative simulation of major graph algorithms
